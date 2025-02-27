@@ -7,7 +7,7 @@ import FileNode from '../nodes/message/FileNode';
 import LocationNode from '../nodes/message/locationNode';
 import ButtonNode from '../nodes/message/ButtonNode';
 import TextInputNode from '../nodes/listen_to/TextInputNode';
-import CardNode from '../nodes/message/cardNode';
+import CardNode from '../nodes/message/CardNode';
 
 const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closePropertiesPanel }) => {
   return useMemo(() => ({
