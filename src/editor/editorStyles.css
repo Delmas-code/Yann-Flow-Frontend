@@ -1,0 +1,100 @@
+.toolbar {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f9fa;
+  }
+  
+  .toolbar-item {
+    border: none;
+    background: none;
+    color: #444;
+    padding: 4px 8px;
+    margin: 0 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toolbar-item:hover {
+    background-color: #e3f2fd;
+  }
+  
+  .toolbar-item.active {
+    background-color: #bbdefb;
+  }
+  
+  .divider {
+    width: 1px;
+    height: 24px;
+    background-color: #ddd;
+    margin: 0 8px;
+  }
+  
+  /* Editor Content Styles */
+  .editor-root {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .editor-content {
+    outline: 0;
+    overflow: auto;
+    padding: 0;
+  }
+  
+  .editor-placeholder {
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+    display: inline-block;
+    pointer-events: none;
+  }
+  
+  .editor-text-bold {
+    font-weight: bold;
+  }
+  
+  .editor-text-italic {
+    font-style: italic;
+  }
+  
+  .editor-text-underline {
+    text-decoration: underline;
+  }
+  
+  .editor-paragraph {
+    margin: 0;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  
+  .editor-list-ol {
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+  }
+  
+  .editor-list-ul {
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+  }
+  
+  .editor-listitem {
+    margin: 8px 32px;
+  }
+  
+  .editor-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+  }

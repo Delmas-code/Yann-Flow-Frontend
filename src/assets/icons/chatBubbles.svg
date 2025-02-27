@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!-- Green background square -->
+  <rect width="16" height="16" fill="#1e8c01"/>
+  
+  <!-- Top chat bubble with tail on bottom left -->
+  <path d="M2.5 3.5 C2.2 3.5, 2 3.7, 2 4 L2 6.5 C2 6.8, 2.2 7, 2.5 7 L3.2 7 L3.2 8 L4.2 7 L10.5 7 C10.8 7, 11 6.8, 11 6.5 L11 4 C11 3.7, 10.8 3.5, 10.5 3.5 Z" 
+        fill="#1e8c01" stroke="white" stroke-width="0.4" stroke-linejoin="round"/>
+  
+  <!-- Bottom chat bubble with tail on bottom right -->
+  <path d="M5.5 9 C5.2 9, 5 9.2, 5 9.5 L5 12 C5 12.3, 5.2 12.5, 5.5 12.5 L12 12.5 L12.8 13.5 L12.8 12.5 L13.5 12.5 C13.8 12.5, 14 12.3, 14 12 L14 9.5 C14 9.2, 13.8 9, 13.5 9 Z"
+        fill="#1e8c01" stroke="white" stroke-width="0.4" stroke-linejoin="round"/>
+  
+  <!-- Three dots in the second bubble (smaller) -->
+  <circle cx="7.5" cy="10.75" r="0.35" fill="white"/>
+  <circle cx="9.5" cy="10.75" r="0.35" fill="white"/>
+  <circle cx="11.5" cy="10.75" r="0.35" fill="white"/>
+</svg>
