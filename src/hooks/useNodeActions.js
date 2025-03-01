@@ -65,10 +65,16 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
           newNode.data.locations = cloneMediaArray(nodeToClone.data.locations, 'location');
           break;
         case NodeTypes.BUTTON_NODE:
-          newNode.data.locations = cloneMediaArray(nodeToClone.data.buttons, 'button');
+          newNode.data.buttons = cloneMediaArray(nodeToClone.data.buttons, 'button');
           break;
+        // case NodeTypes.CARD_NODE:
+        //   newNode.data.locations = cloneMediaArray(nodeToClone.data.buttons, 'card');
+        //   break;
+
         case NodeTypes.CARD_NODE:
-          newNode.data.locations = cloneMediaArray(nodeToClone.data.buttons, 'card');
+          // Ensure text content is properly cloned
+          newNode.data.content = nodeToClone.data.content;
+          newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
           break;
         
         case NodeTypes.TEXT_NODE:
