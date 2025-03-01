@@ -16,7 +16,7 @@ const messageNodeTypes = [
     { type: NodeTypes.FILE_NODE, label: 'File', color: '#ffffff', textColor: '#000000', icon: FileIcon },
     { type: NodeTypes.LOCATION_NODE, label: 'Location', color: '#ffffff', textColor: '#000000', icon: LocationIcon },
     { type: NodeTypes.BUTTON_NODE, label: 'Button', color: '#ffffff', textColor: '#000000', icon: ButtonIcon },
-    // { type: NodeTypes.CARD_NODE, label: 'Card', color: '#ffffff', textColor: '#000000', icon: CardIcon },
+    { type: NodeTypes.CARD_NODE, label: 'Card', color: '#ffffff', textColor: '#000000', icon: CardIcon },
 ];
 
 const listenToNodeTypes = [
