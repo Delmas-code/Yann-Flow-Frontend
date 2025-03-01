@@ -774,6 +774,242 @@ const cardStyles = {
 };
 
 
+const carouselStyles = {
+  container: {
+    width: '90%',
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '16px'
+  },
+  section: {
+    marginBottom: '20px'
+  },
+  label: {
+    display: 'block',
+    fontSize: '14px',
+    color: '#4B5563',
+    marginBottom: '4px',
+    fontFamily: 'Outfit'
+  },
+  inputGroup: {
+    marginBottom: '12px'
+  },
+  input: {
+    width: '90%',
+    padding: '8px 12px',
+    border: '1px solid #D1D5DB',
+    borderRadius: '4px',
+    fontSize: '14px',
+    fontFamily: 'Outfit'
+  },
+  previewList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    marginTop: '15px',
+    backgroundColor: '#f0f0f0',
+    borderRadius: '8px',
+    minHeight: '200px'
+  },
+  uploadArea: {
+    border: '2px solid #ddd',
+    padding: '14px',
+    marginBottom: '16px'
+  },
+  mediaUploadList: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '10px',
+    marginTop: '10px'
+  },
+  mediaPreviewThumbnail: {
+    width: '60px',
+    height: '60px',
+    objectFit: 'cover',
+    borderRadius: '4px',
+    border: '1px solid #ddd'
+  },
+  mediaUploadItem: {
+    position: 'relative',
+    width: '60px',
+    height: '60px',
+  },
+  removeMediaButton: {
+    position: 'absolute',
+    top: '-8px',
+    right: '-8px',
+    backgroundColor: 'rgba(239, 68, 68, 0.9)',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '20px',
+    height: '20px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2px',
+    zIndex: 10
+  },
+  editorContainer: {
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    overflow: 'hidden',
+  },
+  editor: {
+    height: '70px',
+    resize: 'vertical',
+    overflow: 'auto',
+    padding: '10px',
+  },
+  addButton: {
+    marginTop: '12px',
+    height: '30%',
+    backgroundColor: '#fff',
+    color: '#237804',
+    border: '1px solid #237804',
+    padding: '6px 10px',
+    cursor: 'pointer',
+  },
+  previewContainer: {
+    position: 'relative',
+    borderRadius: '12px',
+    overflow: 'hidden',
+    marginBottom: '10px',
+    backgroundColor: '#e7f7d4',
+    maxWidth: '90%',
+    border: '1px solid #ddd',
+    boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
+  },
+  imagePreviewContainer: {
+    width: '100%',
+    height: '140px',
+    overflow: 'hidden',
+    position: 'relative'
+  },
+  imagePreview: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
+  carouselContainer: {
+    position: 'relative',
+    width: '100%',
+    height: '160px'
+  },
+  navigationButton: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    zIndex: 10,
+    backgroundColor: '#237804',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    opacity: 0.9
+  },
+  navigationButtonDisabled: {
+    backgroundColor: '#cccccc',
+    cursor: 'not-allowed',
+    opacity: 0.5
+  },
+  prevButton: {
+    left: '8px',
+  },
+  nextButton: {
+    right: '8px',
+  },
+  textPreview: {
+    padding: '12px',
+    fontSize: '14px',
+    color: '#333'
+  },
+  buttonPreview: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: '1px solid rgba(29, 29, 29, 0.25)',
+    borderRadius: '2px',
+    color: '#7BB9FE',
+    fontSize: '14px',
+    fontWeight: 400,
+    fontFamily: 'Outfit',
+    width: 'auto',
+    background: 'transparent',
+    cursor: 'pointer',
+    padding: '8px 12px',
+    margin: '12px'
+  },
+  removeButton: {
+    position: 'absolute',
+    top: '8px',
+    right: '8px',
+    backgroundColor: '#ef4444',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '24px',
+    height: '24px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px',
+    zIndex: 10
+  },
+  selectButton: {
+    position: 'absolute',
+    top: '8px',
+    left: '8px',
+    backgroundColor: '#3b82f6',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '24px',
+    height: '24px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px',
+    zIndex: 10
+  },
+  labelInput: {
+    display: 'flex',
+    gap: '20px',
+    marginBottom: '7px',
+  },
+  actionInput: {
+    display: 'flex',
+    marginBottom: '7px'
+  },
+  p: {
+    paddingRight: '13px',
+  },
+  selectedCarousel: {
+    border: '2px solid #3b82f6',
+  },
+  videoContainer: {
+    width: '100%',
+    height: '160px',
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#000'
+  },
+  video: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain'
+  }
+};
+
+
 
 const textInputStyles = {
   container: {
@@ -902,4 +1138,5 @@ const voiceStyles = {
 // In ../../modules/panelStyles.js
 
 
-export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, buttonStyles, cardStyles, textInputStyles, voiceStyles }
+export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, 
+        buttonStyles, cardStyles, textInputStyles, voiceStyles, carouselStyles }

@@ -72,8 +72,11 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
         //   break;
 
         case NodeTypes.CARD_NODE:
-          // Ensure text content is properly cloned
-          newNode.data.content = nodeToClone.data.content;
+          newNode.data.cards = nodeToClone.data.cards;
+          newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
+          break;
+        case NodeTypes.CAROUSEL_NODE:
+          newNode.data.carousels = nodeToClone.data.carousels;
           newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
           break;
         
@@ -234,6 +237,21 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     setNodesWithPanelUpdate((nds) => nds.concat(newNode));
   }, [setNodesWithPanelUpdate, onNodeUpdate]);
 
+  const addCarouselNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Carousel Block',
+        label: `New ${type}`,
+        carousels: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
   const addTextInputNode = useCallback((position, type) => {
     const newNode = {
       id: `node_${type}_${Date.now()}`,
@@ -272,6 +290,7 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     addLocationNode,
     addButtonNode,
     addCardNode,
+    addCarouselNode,
     addTextInputNode,
     addVoiceNode,
     deleteNode,

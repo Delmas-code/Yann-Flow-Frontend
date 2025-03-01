@@ -9,6 +9,7 @@ export const NodeTypes = {
     LOCATION_NODE: 'locationNode',
     BUTTON_NODE: 'buttonNode',
     CARD_NODE: 'cardNode',
+    CAROUSEL_NODE: 'carouselNode',
     TEXT_INPUT_NODE: 'textInputNode',
     VOICE_NODE: 'voiceNode',
     

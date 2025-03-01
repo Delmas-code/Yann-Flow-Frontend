@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import "@fontsource/outfit"
 import {MyNewIcon, WifiIcon,TicketIcon, TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
-  FileIcon, LocationIcon, ButtonIcon, MessagesIcon, CardIcon, VoiceIcon
+  FileIcon, LocationIcon, ButtonIcon, MessagesIcon, CardIcon, VoiceIcon, CarouselIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
@@ -19,6 +19,7 @@ const messageNodeTypes = [
     { type: NodeTypes.LOCATION_NODE, label: 'Location', color: '#ffffff', textColor: '#000000', icon: LocationIcon },
     { type: NodeTypes.BUTTON_NODE, label: 'Button', color: '#ffffff', textColor: '#000000', icon: ButtonIcon },
     { type: NodeTypes.CARD_NODE, label: 'Card', color: '#ffffff', textColor: '#000000', icon: CardIcon },
+    { type: NodeTypes.CAROUSEL_NODE, label: 'Carousel', color: '#ffffff', textColor: '#000000', icon: CarouselIcon },
 ];
 
 const listenToNodeTypes = [

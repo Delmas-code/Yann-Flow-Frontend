@@ -7,6 +7,7 @@ import FileNode from '../nodes/message/FileNode';
 import LocationNode from '../nodes/message/locationNode';
 import ButtonNode from '../nodes/message/ButtonNode';
 import CardNode from '../nodes/message/CardNode';
+import CarouselNode from '../nodes/message/CarouselNode';
 import TextInputNode from '../nodes/listen_to/TextInputNode';
 import VoiceNode from '../nodes/listen_to/voiceNode';
 
@@ -76,6 +77,15 @@ const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closeProperties
     ),
     cardNode: (props) => (
       <CardNode 
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    carouselNode: (props) => (
+      <CarouselNode 
         {...props}
         deleteNode={deleteNode}
         duplicateNode={duplicateNode}

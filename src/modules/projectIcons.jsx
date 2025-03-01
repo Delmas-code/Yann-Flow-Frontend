@@ -1,6 +1,6 @@
 import { Wifi, Ticket, Image, Mic, Type, MessagesSquare,
    PlayCircle, FileArchive, MapPin, Pointer, BookImage,
-   AudioLines
+   AudioLines, GalleryHorizontal
    } from "lucide-react";
 
 
@@ -231,6 +231,14 @@ export const CardIcon = () =>{
     );
 }
 
+
+export const CarouselIcon = () =>{
+  return (
+      <div>
+         <Icon IconComponent={GalleryHorizontal} />
+      </div>
+    );
+}
 
 
 //Property Panel Icons
