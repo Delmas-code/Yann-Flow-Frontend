@@ -79,6 +79,11 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
           newNode.data.carousels = nodeToClone.data.carousels;
           newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
           break;
+        case NodeTypes.AI_NODE:
+          newNode.data.aiContents = nodeToClone.data.aiContents;
+          newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
+          break;
+
         
         case NodeTypes.TEXT_NODE:
           // Ensure text content is properly cloned
@@ -252,6 +257,21 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     setNodesWithPanelUpdate((nds) => nds.concat(newNode));
   }, [setNodesWithPanelUpdate, onNodeUpdate]);
 
+  const addAINode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'AI Block',
+        label: `New ${type}`,
+        aiContents: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
   const addTextInputNode = useCallback((position, type) => {
     const newNode = {
       id: `node_${type}_${Date.now()}`,
@@ -291,6 +311,7 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     addButtonNode,
     addCardNode,
     addCarouselNode,
+    addAINode,
     addTextInputNode,
     addVoiceNode,
     deleteNode,

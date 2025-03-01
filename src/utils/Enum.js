@@ -10,6 +10,7 @@ export const NodeTypes = {
     BUTTON_NODE: 'buttonNode',
     CARD_NODE: 'cardNode',
     CAROUSEL_NODE: 'carouselNode',
+    AI_NODE: 'aiNode',
     TEXT_INPUT_NODE: 'textInputNode',
     VOICE_NODE: 'voiceNode',
     

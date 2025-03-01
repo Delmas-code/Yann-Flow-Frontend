@@ -10,6 +10,7 @@ import CardNode from '../nodes/message/CardNode';
 import CarouselNode from '../nodes/message/CarouselNode';
 import TextInputNode from '../nodes/listen_to/TextInputNode';
 import VoiceNode from '../nodes/listen_to/voiceNode';
+import AINode from '../nodes/message/AINode';
 
 const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closePropertiesPanel }) => {
   return useMemo(() => ({
@@ -86,6 +87,15 @@ const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closeProperties
     ),
     carouselNode: (props) => (
       <CarouselNode 
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    aiNode: (props) => (
+      <AINode 
         {...props}
         deleteNode={deleteNode}
         duplicateNode={duplicateNode}

@@ -1,6 +1,6 @@
 import { Wifi, Ticket, Image, Mic, Type, MessagesSquare,
    PlayCircle, FileArchive, MapPin, Pointer, BookImage,
-   AudioLines, GalleryHorizontal
+   AudioLines, GalleryHorizontal, Brain
    } from "lucide-react";
 
 
@@ -236,6 +236,15 @@ export const CarouselIcon = () =>{
   return (
       <div>
          <Icon IconComponent={GalleryHorizontal} />
+      </div>
+    );
+}
+
+
+export const AIIcon = () =>{
+  return (
+      <div>
+         <Icon IconComponent={Brain} />
       </div>
     );
 }

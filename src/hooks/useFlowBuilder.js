@@ -23,6 +23,7 @@ const useFlowBuilder = () => {
     addButtonNode,
     addCardNode,
     addCarouselNode,
+    addAINode,
     addTextInputNode,
     addVoiceNode
   } = useNodeActions(setNodes, setEdges, setSelectedNode, selectedNode);
@@ -76,6 +77,8 @@ const useFlowBuilder = () => {
       addCardNode(position, type);
     } else if (type === NodeTypes.CAROUSEL_NODE) {
       addCarouselNode(position, type);
+    } else if (type === NodeTypes.AI_NODE) {
+      addAINode(position, type);
     } else if (type === NodeTypes.TEXT_INPUT_NODE) {
       addTextInputNode(position, type);
     } else if (type === NodeTypes.VOICE_NODE) {
@@ -85,7 +88,7 @@ const useFlowBuilder = () => {
 
   }, [
     addImageNode, addVideoNode, addAudioNode, addFileNode,addLocationNode, addButtonNode, 
-    addCardNode, addCarouselNode, addTextInputNode, addVoiceNode, setNodesWithPanelUpdate
+    addCardNode, addCarouselNode, addAINode, addTextInputNode, addVoiceNode, setNodesWithPanelUpdate
   ]);
 
   const onDragOver = useCallback((event) => {

@@ -12,6 +12,7 @@ import CardNodePropertyPanel from './CardNodePropertyPanel ';
 import TextInputNodePropertyPanel from './TextInputNodePropertyPanel';
 import VoiceNodePropertyPanel from './VoiceNodePropertyPanel';
 import CarouselNodePropertyPanel from './CarouselNodePropertyPanel ';
+import AINodePropertyPanel from './AINodePropertyPanel';
 
 const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
   const propertyPanels = {
@@ -24,6 +25,7 @@ const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
     [NodeTypes.BUTTON_NODE]: ButtonNodePropertyPanel,
     [NodeTypes.CARD_NODE]: CardNodePropertyPanel,
     [NodeTypes.CAROUSEL_NODE]: CarouselNodePropertyPanel,
+    [NodeTypes.AI_NODE]: AINodePropertyPanel,
     [NodeTypes.TEXT_INPUT_NODE]: TextInputNodePropertyPanel,
     [NodeTypes.VOICE_NODE]: VoiceNodePropertyPanel,
     default: DefaultPropertiesPanel
