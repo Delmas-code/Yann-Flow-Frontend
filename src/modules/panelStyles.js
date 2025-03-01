@@ -841,7 +841,65 @@ const textInputStyles = {
   }
 };
 
+
+const voiceStyles = {
+  container: {
+    width: '90%',
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '16px'
+  },
+  uploadArea: {
+    border: '2px solid #ddd',
+    padding: '14px',
+    marginBottom: '16px',
+    textAlign: 'center'
+  },
+  previewList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    padding: '8px'
+  },
+  previewContainer: {
+    position: 'relative',
+    width: '100%',
+    backgroundColor: '#f0f0f0',
+    borderRadius: '8px',
+    padding: '12px'
+  },
+  voicePreview: {
+    width: '100%',
+    height: '40px'
+  },
+  fileName: {
+    marginTop: '8px',
+    fontSize: '12px',
+    color: '#666',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
+  },
+  removeButton: {
+    position: 'absolute',
+    top: '-8px',
+    right: '-8px',
+    backgroundColor: '#ef4444',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '24px',
+    height: '24px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px'
+  }
+};
+
+
 // In ../../modules/panelStyles.js
 
 
-export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, buttonStyles, cardStyles, textInputStyles }
+export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, buttonStyles, cardStyles, textInputStyles, voiceStyles }

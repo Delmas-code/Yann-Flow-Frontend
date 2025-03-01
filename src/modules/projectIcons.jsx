@@ -1,4 +1,7 @@
-import { Wifi, Ticket, Image, Mic, Type, MessagesSquare, PlayCircle, FileArchive, MapPin, Pointer, BookImage } from "lucide-react";
+import { Wifi, Ticket, Image, Mic, Type, MessagesSquare,
+   PlayCircle, FileArchive, MapPin, Pointer, BookImage,
+   AudioLines
+   } from "lucide-react";
 
 
 //SideBar Icons
@@ -131,6 +134,16 @@ export const ButtonIcon = () =>{
     );
 }
 
+
+export const VoiceIcon = () =>{
+  return (
+      <div>
+         <Icon IconComponent={AudioLines} />
+      </div>
+    );
+}
+
+
 export const ExternalLinkIcon = () => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -217,6 +230,8 @@ export const CardIcon = () =>{
       </div>
     );
 }
+
+
 
 //Property Panel Icons
 
@@ -332,5 +347,46 @@ export const FilePropIcon = () => (
     <line x1="40" y1="50" x2="55" y2="50" stroke="white" stroke-width="3"/>
   </svg>
 
+
+);
+
+
+
+export const VoicePropIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="8" fill="#1e8c01" />
+    
+    <path
+      d="
+        M50,30
+        a10,10 0 0 1 10,10
+        v10
+        a10,10 0 0 1 -20,0
+        v-10
+        a10,10 0 0 1 10,-10
+      "
+      fill="none"
+      stroke="#fff"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    
+    <line
+      x1="50" y1="70"
+      x2="50" y2="80"
+      stroke="#fff"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+    
+    <path
+      d="M30,60 Q50,80 70,60"
+      fill="none"
+      stroke="#fff"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+  </svg>
 
 );

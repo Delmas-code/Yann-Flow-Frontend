@@ -8,8 +8,9 @@ import AudioNodePropertyPanel from '../PropertyPanels/AudioNodePropertyPanel';
 import FileNodePropertyPanel from '../PropertyPanels/FileNodePropertyPanel';
 import LocationNodePropertyPanel from './LocationNodePropertyPanel';
 import ButtonNodePropertyPanel from './ButtonNodePropertyPanel';
-import TextInputNodePropertyPanel from './TextInputNodePropertyPanel';
 import CardNodePropertyPanel from './CardNodePropertyPanel ';
+import TextInputNodePropertyPanel from './TextInputNodePropertyPanel';
+import VoiceNodePropertyPanel from './VoiceNodePropertyPanel';
 
 const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
   const propertyPanels = {
@@ -22,6 +23,7 @@ const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
     [NodeTypes.BUTTON_NODE]: ButtonNodePropertyPanel,
     [NodeTypes.CARD_NODE]: CardNodePropertyPanel,
     [NodeTypes.TEXT_INPUT_NODE]: TextInputNodePropertyPanel,
+    [NodeTypes.VOICE_NODE]: VoiceNodePropertyPanel,
     default: DefaultPropertiesPanel
   };
 

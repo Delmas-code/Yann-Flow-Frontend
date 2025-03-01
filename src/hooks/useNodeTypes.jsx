@@ -6,8 +6,9 @@ import AudioNode from '../nodes/message/AudioNode';
 import FileNode from '../nodes/message/FileNode';
 import LocationNode from '../nodes/message/locationNode';
 import ButtonNode from '../nodes/message/ButtonNode';
-import TextInputNode from '../nodes/listen_to/TextInputNode';
 import CardNode from '../nodes/message/CardNode';
+import TextInputNode from '../nodes/listen_to/TextInputNode';
+import VoiceNode from '../nodes/listen_to/voiceNode';
 
 const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closePropertiesPanel }) => {
   return useMemo(() => ({
@@ -84,6 +85,15 @@ const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closeProperties
     ),
     textInputNode: (props) => (
       <TextInputNode 
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    voiceNode: (props) => (
+      <VoiceNode 
         {...props}
         deleteNode={deleteNode}
         duplicateNode={duplicateNode}

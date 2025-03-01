@@ -88,6 +88,10 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
           newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
           break;
         
+        case NodeTypes.VOICE_NODE:
+          newNode.data.voice = cloneMediaArray(nodeToClone.data.voice, 'voice');
+          break;
+        
 
         default:
           // For unknown node types, ensure data is deeply cloned
@@ -245,6 +249,21 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     setNodesWithPanelUpdate((nds) => nds.concat(newNode));
   }, [setNodesWithPanelUpdate, onNodeUpdate]);
 
+  const addVoiceNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Voice Block',
+        label: `New ${type}`,
+        audios: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
   return {
     addImageNode,
     addVideoNode,
@@ -254,6 +273,7 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     addButtonNode,
     addCardNode,
     addTextInputNode,
+    addVoiceNode,
     deleteNode,
     duplicateNode,
     onNodeUpdate,

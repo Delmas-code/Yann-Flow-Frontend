@@ -1,7 +1,9 @@
 // src/components/Sidebar.jsx
 import React, { useState } from 'react';
 import "@fontsource/outfit"
-import {MyNewIcon, WifiIcon,TicketIcon, TextIcon2, ImageIcon, VideoIcon, AudioIcon, FileIcon, LocationIcon, ButtonIcon, MessagesIcon, CardIcon} from '../modules/projectIcons';
+import {MyNewIcon, WifiIcon,TicketIcon, TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
+  FileIcon, LocationIcon, ButtonIcon, MessagesIcon, CardIcon, VoiceIcon
+} from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
 
@@ -21,6 +23,7 @@ const messageNodeTypes = [
 
 const listenToNodeTypes = [
   { type: NodeTypes.TEXT_INPUT_NODE, label: 'Text', color: '#ffffff', textColor: '#000000', icon: MessagesIcon },
+  { type: NodeTypes.VOICE_NODE, label: 'Voice', color: '#ffffff', textColor: '#000000', icon: VoiceIcon },
 ];
 
 const appsNodeTypes = [
