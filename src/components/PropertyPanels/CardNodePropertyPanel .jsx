@@ -16,163 +16,49 @@ import { LinkNode } from '@lexical/link';
 import ToolbarPlugin from '../../editor/ToolbarPlugin';
 import { ExternalLinkIcon } from '../../modules/projectIcons';
 import defaultCardImage from '../../assets/default-card-img.jpg';
+import { cardStyles } from '../../modules/panelStyles';
 
-const cardStyles = {
-  container: {
-    width: '90%',
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '16px'
-  },
-  section: {
-    marginBottom: '20px'
-  },
-  label: {
-    display: 'block',
-    fontSize: '14px',
-    color: '#4B5563',
-    marginBottom: '4px',
-    fontFamily: 'Outfit'
-  },
-  inputGroup: {
-    marginBottom: '12px'
-  },
-  input: {
-    width: '90%',
-    padding: '8px 12px',
-    border: '1px solid #D1D5DB',
-    borderRadius: '4px',
-    fontSize: '14px',
-    fontFamily: 'Outfit'
-  },
-  previewList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '12px',
-    marginTop: '15px',
-    // padding: '10px',
-    backgroundColor: '#f0f0f0', // WhatsApp chat background color
-    borderRadius: '8px',
-    minHeight: '200px'
-  },
-  uploadArea: {
-    border: '2px solid #ddd',
-    padding: '14px',
-    marginBottom: '16px'
-  },
+// Memoized Media Preview component
+const MediaPreview = memo(({ media }) => {
+  if (!media) return null;
   
-  editorContainer: {
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    overflow: 'hidden',
-  },
-  editor: {
-    height: '70px',
-    resize: 'vertical',
-    overflow: 'auto',
-    padding: '10px',
-  },
-  addButton: {
-    marginTop: '12px',
-    height: '30%',
-    backgroundColor: '#fff',
-    color: '#237804',
-    border: '1px solid #237804',
-    padding: '6px 10px',
-    cursor: 'pointer',
-  },
-  previewContainer: {
-    position: 'relative',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    marginBottom: '10px',
-    backgroundColor: '#e7f7d4', // WhatsApp light green
-    maxWidth: '90%',
-    border: '1px solid #ddd',
-    boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
-  },
-  imagePreviewContainer: {
-    width: '100%',
-    height: '140px',
-    overflow: 'hidden',
-    position: 'relative'
-  },
-  imagePreview: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover'
-  },
-  textPreview: {
-    padding: '12px',
-    fontSize: '14px',
-    color: '#333'
-  },
-  buttonPreview: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: '1px solid rgba(29, 29, 29, 0.25)',
-    borderRadius: '2px',
-    color: '#7BB9FE',
-    fontSize: '14px',
-    fontWeight: 400,
-    fontFamily: 'Outfit',
-    width: 'auto',
-    background: 'transparent',
-    cursor: 'pointer',
-    padding: '8px 12px',
-    margin: '12px'
-  },
-  removeButton: {
-    position: 'absolute',
-    top: '8px',
-    right: '8px',
-    backgroundColor: '#ef4444',
-    color: 'white',
-    border: 'none',
-    borderRadius: '50%',
-    width: '24px',
-    height: '24px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4px',
-    zIndex: 10
-  },
-  selectButton: {
-    position: 'absolute',
-    top: '8px',
-    left: '8px',
-    backgroundColor: '#3b82f6',
-    color: 'white',
-    border: 'none',
-    borderRadius: '50%',
-    width: '24px',
-    height: '24px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4px',
-    zIndex: 10
-  },
-  labelInput: {
-    display: 'flex',
-    gap: '20px',
-    marginBottom: '7px',
-  },
-  actionInput: {
-    display: 'flex',
-    marginBottom: '7px'
-  },
-  p: {
-    paddingRight: '13px',
-  },
-  selectedCard: {
-    border: '2px solid #3b82f6',
+  // Check if it's a video based on file type or URL
+  const isVideo = media.file?.type?.startsWith('video/') || 
+                  media.name?.match(/\.(mp4|webm|ogg|mov)$/i) ||
+                  media.preview?.match(/\.(mp4|webm|ogg|mov)$/i);
+  
+  if (isVideo) {
+    return (
+      <div style={cardStyles.videoContainer}>
+        <video 
+          src={media.preview}
+          style={cardStyles.video}
+          controls
+          preload="metadata"
+        />
+      </div>
+    );
+  } else {
+    // Default to image
+    return (
+      <div style={{
+        width: '100%',
+        height: '160px',
+        overflow: 'hidden'
+      }}>
+        <img
+          src={media.preview}
+          alt={media.name || "Card image"}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+      </div>
+    );
   }
-};
+});
 
 // Memoized card preview component
 const CardPreview = memo(({ card, onRemove, onSelect, isSelected }) => (
@@ -217,22 +103,8 @@ const CardPreview = memo(({ card, onRemove, onSelect, isSelected }) => (
         <X size={16} />
       </button>
       
-      {card.image && (
-        <div style={{
-          width: '100%',
-          height: '160px',
-          overflow: 'hidden'
-        }}>
-          <img
-            src={card.image.preview}
-            alt={card.image.name || "Card image"}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
-          />
-        </div>
+      {card.media && (
+        <MediaPreview media={card.media} />
       )}
       
       <div style={{
@@ -261,7 +133,6 @@ const CardPreview = memo(({ card, onRemove, onSelect, isSelected }) => (
 
     <div>
       {card.button && (
-
         <div>
           <button
             style={{
@@ -287,13 +158,6 @@ const CardPreview = memo(({ card, onRemove, onSelect, isSelected }) => (
             )}
             {card.button.label || "Sign Up Now"}
           </button>
-
-          {/* <button
-            onClick={() => handleRemoveButton(b.id)}
-            style={buttonStyles.removeButton}
-          >
-            <X size={16} />
-          </button> */}
         </div>
       )}
     </div>
@@ -306,7 +170,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
   const [selectedCardId, setSelectedCardId] = useState(null);
   
   // Form state
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentMedia, setCurrentMedia] = useState(null);
   const [currentText, setCurrentText] = useState('');
   const [buttonLabel, setButtonLabel] = useState('');
   const [buttonAction, setButtonAction] = useState('');
@@ -321,13 +185,25 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
     
     if (node?.id) {
       const nodeCards = node.data?.cards || [];
-      console.log('Setting cards from node data:', nodeCards);
-      setCards(nodeCards);
+      
+      // Convert old format (image) to new format (media) if needed
+      const updatedCards = nodeCards.map(card => {
+        if (card.image && !card.media) {
+          return {
+            ...card,
+            media: card.image
+          };
+        }
+        return card;
+      });
+      
+      console.log('Setting cards from node data:', updatedCards);
+      setCards(updatedCards);
       
       // Select the first card by default if available and none is selected
-      if (nodeCards.length > 0 && !selectedCardId) {
-        console.log('Selecting first card:', nodeCards[0].id);
-        setSelectedCardId(nodeCards[0].id);
+      if (updatedCards.length > 0 && !selectedCardId) {
+        console.log('Selecting first card:', updatedCards[0].id);
+        setSelectedCardId(updatedCards[0].id);
       }
     }
   }, [node?.id]);
@@ -341,7 +217,8 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
       console.log('Found selected card:', selectedCard);
       
       if (selectedCard) {
-        setCurrentImage(selectedCard.image || null);
+        // Use media if available, fall back to image for compatibility
+        setCurrentMedia(selectedCard.media || selectedCard.image || null);
         setCurrentText(selectedCard.text || '');
         
         if (selectedCard.button) {
@@ -381,25 +258,31 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
     });
   }, [node?.id, setNodes]);
   
-  // Handle image upload
+  // Handle media (image or video) upload
   const handleFileSelect = (event) => {
     const file = event.target.files[0];
     if (!file) return;
     
     const reader = new FileReader();
     reader.onload = (e) => {
-      const newImage = {
+      const isVideo = file.type.startsWith('video/');
+      const newMedia = {
         file,
         preview: e.target.result,
         name: file.name,
-        id: `${file.name}-${Date.now()}`
+        id: `${file.name}-${Date.now()}`,
+        type: isVideo ? 'video' : 'image'
       };
       
-      setCurrentImage(newImage);
+      setCurrentMedia(newMedia);
       
-      // Update the selected card with the new image
+      // Update the selected card with the new media
       if (selectedCardId) {
-        updateCard(selectedCardId, { image: newImage });
+        updateCard(selectedCardId, { 
+          media: newMedia,
+          // Also update the image property for backward compatibility
+          image: newMedia
+        });
       }
     };
     reader.readAsDataURL(file);
@@ -429,7 +312,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
     if (selectedCardId) {
       updateCard(selectedCardId, { 
         button: { 
-          ...cards.find(c => c.id === selectedCardId).button,
+          ...cards.find(c => c.id === selectedCardId)?.button,
           label: newLabel
         } 
       });
@@ -443,7 +326,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
     if (selectedCardId) {
       updateCard(selectedCardId, { 
         button: { 
-          ...cards.find(c => c.id === selectedCardId).button,
+          ...cards.find(c => c.id === selectedCardId)?.button,
           action: newAction
         } 
       });
@@ -457,7 +340,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
     if (selectedCardId) {
       updateCard(selectedCardId, { 
         button: { 
-          ...cards.find(c => c.id === selectedCardId).button,
+          ...cards.find(c => c.id === selectedCardId)?.button,
           type: newType
         } 
       });
@@ -492,10 +375,16 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
   };
   
   // Add a new card
-
   const handleAddCard = () => {
     const newCard = {
       id: `card-${Date.now()}`,
+      media: {
+        preview: defaultCardImage,
+        name: "Default Image",
+        id: `default-image-${Date.now()}`,
+        type: 'image'
+      },
+      // Keep image property for backward compatibility
       image: {
         preview: defaultCardImage,
         name: "Default Image",
@@ -574,8 +463,8 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
   useEffect(() => {
     return () => {
       cards.forEach(card => {
-        if (card.image && card.image.preview) {
-          URL.revokeObjectURL(card.image.preview);
+        if ((card.media && card.media.preview) || (card.image && card.image.preview)) {
+          URL.revokeObjectURL(card.media?.preview || card.image?.preview);
         }
       });
     };
@@ -653,7 +542,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
             {/* Content sections - only shown if a card is selected */}
             {selectedCardId && (
               <>
-                {/* Header (Image) Section */}
+                {/* Header (Image/Video) Section */}
                 <div style={cardStyles.section}>
                   <p>Header (Image or video)</p>
                   <div style={cardStyles.uploadArea}>
@@ -662,7 +551,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
                       type="file"
                       onChange={handleFileSelect}
                       id="card-media-file"
-                      // accept="image/*"
+                      accept="image/*,video/*"
                     />
                     <label className="media-upload" htmlFor="card-media-file" style={{width: 'auto'}}>
                       <UploadCloudIcon size={24} strokeWidth={1.5} />
