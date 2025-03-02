@@ -163,11 +163,14 @@ const TextInputNodePropertyPanel = ({ node, setNodes, onClose }) => {
       <div className="property-panel-content">
         {activeTab === 'options' ? (
           <div style={textInputStyles.container}>
-            <div style={{ width: "50px", height: "50px" }}>
-              <TextInputPropIcon />
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <TextInputPropIcon />
+              </div>
+              <p style={{ marginBottom: '-10px'}}>Text Input</p>
             </div>
             <hr style={{marginTop: '-7px'}}/>
-            <p style={{marginTop: '-10px'}}>Enter your text prompt</p>
+            <p style={{marginTop: '-10px', fontSize: '17px', paddingLeft: 0, margin: '-10px 0 0 0',}}>Enter your text prompt</p>
             
             <div style={textInputStyles.editorContainer}>
               <LexicalComposer initialConfig={editorConfig}>

@@ -19,10 +19,10 @@ const NodeHolder = ({ title, nodeTypes}) => {
                 paddingTop: '5px',
                     }}>{title}</h3>
             <hr style={{
-                width:'100%',
+                width:'250px',
                 textAlign:'left',
                 border: '1px solid #EEEEEE',
-                marginLeft:'0'
+                marginLeft:'-15px'
                 }} ></hr>
             
             <div className="nodes-container" style={{
@@ -38,6 +38,7 @@ const NodeHolder = ({ title, nodeTypes}) => {
                     <div
                         key={node.type}
                         className="node-item"
+                        title={node.label}
                         onDragStart={(e) => onDragStart(e, node.type)}
                         draggable
                         style={{
@@ -55,15 +56,18 @@ const NodeHolder = ({ title, nodeTypes}) => {
                             alignItems: 'center',
                             // justifyContent: 'left',
                             height: '25px',
-                            width: '121px',
+                            // width: '90px',
                             textAlign: 'center',
-                            wordBreak: 'break-word'
+                            // wordBreak: 'break-word',
+                            whiteSpace: 'nowrap', // Prevent text wrapping
+                            overflow: 'visible', // SHow overflow
+                            textOverflow: 'ellipsis',
                         }}
                     >
                       
                         {IconComponent && (
-                        <span style={{ display: 'flex', alignItems: 'center', paddingRight: '5px', paddingTop: '5px'}}>
-                        <IconComponent size={16} />
+                        <span style={{ display: 'flex', alignItems: 'center', paddingRight: '5px', paddingTop: '1px'}}>
+                        <IconComponent size={18} color="#237804" />
                         </span>
                         )}
                         {node.label}

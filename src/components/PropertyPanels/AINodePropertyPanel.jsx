@@ -14,118 +14,8 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode } from '@lexical/link';
 import { Info, Brain } from 'lucide-react';
 import ToolbarPlugin from '../../editor/ToolbarPlugin';
-
-const aiNodeStyles = {
-  container: {
-    padding: '15px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-    maxWidth: '100%',
-    boxSizing: 'border-box',
-    // overflowX: 'hidden'
-  },
-  aiIcon: {
-    width: '50px',
-    height: '50px',
-    backgroundColor: '#4CAF50',
-    borderRadius: '4px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexShrink: 0,
-  },
-  editorContainer: {
-    border: '1px solid #ddd',
-    borderRadius: '1px',
-    overflow: 'hidden',
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  editor: {
-    minHeight: '100px',
-    resize: 'vertical',
-    overflow: 'auto',
-    padding: '10px',
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  modelSelector: {
-    marginTop: '15px',
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  modelLabel: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-    marginBottom: '8px',
-    fontWeight: '500',
-    position: 'relative',
-    fontFamily: 'Outfit',
-  },
-  infoIcon: {
-    cursor: 'help',
-    marginLeft: '4px',
-    position: 'relative',
-  },
-  tooltip: {
-    position: 'absolute',
-    top: '100%',
-    left: '0',
-    width: '220px',
-    padding: '8px 12px',
-    backgroundColor: '#333',
-    color: 'white',
-    borderRadius: '4px',
-    fontSize: '12px',
-    lineHeight: '1.4',
-    zIndex: 10,
-    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-    visibility: 'hidden',
-    opacity: 0,
-    transition: 'opacity 0.2s, visibility 0.2s',
-  },
-  tooltipVisible: {
-    visibility: 'visible',
-    opacity: 1,
-  },
-  dropdown: {
-    width: '100%',
-    padding: '8px 12px',
-    borderRadius: '1px',
-    border: '1px solid #ddd',
-    backgroundColor: 'white',
-    boxSizing: 'border-box',
-  },
-  infoText: {
-    fontSize: '12px',
-    color: '#666',
-    marginTop: '5px',
-    fontFamily: 'Outfit',
-    maxWidth: '100%',
-  },
-  saveButton: {
-    backgroundColor: '#1976d2',
-    color: 'white',
-    border: 'none',
-    padding: '8px 16px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    marginTop: '15px',
-    alignSelf: 'flex-start',
-  },
-  divider: {
-    width: '100%',
-    margin: 0,
-    border: 'none',
-    borderTop: '1px solid #eee',
-  },
-  promptLabel: {
-    margin: '-10px 0 0 0',
-    fontFamily: 'Outfit',
-  }
-};
+import { AIPropIcon } from '../../modules/projectIcons';
+import { aiNodeStyles } from '../../modules/panelStyles';
 
 const ModelInfoTooltip = ({ isVisible }) => {
   const tooltipStyle = {
@@ -246,15 +136,12 @@ const AINodePropertyPanel = ({ node, setNodes, onClose }) => {
       <div className="property-panel-content" style={{ overflowX: 'hidden', width: '100%', boxSizing: 'border-box' }}>
         {activeTab === 'options' ? (
           <div style={aiNodeStyles.container}>
-            <Brain size={40} color='#237804'/>
-            {/* <div style={aiNodeStyles.aiIcon}>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 12L12 21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 12L20 7.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 12L4 7.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div> */}
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <AIPropIcon />
+              </div>
+              {/* <p>Video</p> */}
+            </div>
             <hr style={aiNodeStyles.divider}/>
             <p style={aiNodeStyles.promptLabel}>Enter AI prompt</p>
             

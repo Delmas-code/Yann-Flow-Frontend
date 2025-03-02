@@ -17,6 +17,7 @@ import ToolbarPlugin from '../../editor/ToolbarPlugin';
 import { ExternalLinkIcon } from '../../modules/projectIcons';
 import defaultCarouselImage from '../../assets/default-card-img.jpg';
 import { carouselStyles } from '../../modules/panelStyles';
+import { CarouselPropIcon } from '../../modules/projectIcons';
 
 
 // CarouselMediaDisplay component
@@ -552,7 +553,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
   
   const renderPreviewSection = () => (
     <div style={carouselStyles.section}>
-      <p>Preview</p>
+      <p style={{ paddingLeft: 0, fontSize: '18px'}}>Preview</p>
       <div style={carouselStyles.previewList}>
         {carousels && carousels.length > 0 ? (
           carousels.map((carousel) => (
@@ -565,7 +566,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
             />
           ))
         ) : (
-          <p style={{textAlign: 'center', color: '#666'}}>
+          <p style={{textAlign: 'center', color: '#666', fontSize: '17px'}}>
             No carousels added yet. Click the "+" button to add a carousel.
           </p>
         )}
@@ -597,13 +598,15 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
         {activeTab === 'options' ? (
           <div style={carouselStyles.container}>
             {/* Panel Header */}
-            <div style={{ width: "50px", height: "50px" }}>
-              <GalleryHorizontal size={40} color='#237804'/>
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <CarouselPropIcon />
+              </div>
+              <p>Carousel</p>
             </div>
             
             <hr/>
             <div style={{display: 'flex', marginBottom: '20px', justifyContent: 'space-between'}}>
-              <p>Carousel</p>
               <button
                 onClick={(e) => {
                   e.preventDefault();
@@ -621,7 +624,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
               <>
                 {/* Header (Multiple Images/Videos) Section */}
                 <div style={carouselStyles.section}>
-                  <p>Media Files (Images or videos)</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}}>Header (Image or video)</p>
                   <div style={carouselStyles.uploadArea}>
                     <input 
                       className='media-upload-section'
@@ -642,7 +645,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
                 
                 {/* Body (Text) Section */}
                 <div style={carouselStyles.section}>
-                  <p>Body</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}} >Body</p>
                   <div style={carouselStyles.editorContainer}>
                     <LexicalComposer initialConfig={editorConfig}>
                       <div className="editor-container">
@@ -665,7 +668,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
                 
                 {/* Button Section */}
                 <div style={carouselStyles.section}>
-                  <p>Button</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}} >Button</p>
                   <div style={carouselStyles.inputGroup}>
                     <select
                       value={buttonType}
@@ -679,7 +682,7 @@ const CarouselNodePropertyPanel = ({ node, setNodes }) => {
                   
                   <div>
                     <div style={carouselStyles.labelInput}>
-                      <p>Label</p>
+                      <p style={{ fontSize: '15px' }} >Label</p>
                       <input
                         type="text"
                         placeholder="Reply"

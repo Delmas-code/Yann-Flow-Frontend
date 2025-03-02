@@ -17,6 +17,7 @@ import ToolbarPlugin from '../../editor/ToolbarPlugin';
 import { ExternalLinkIcon } from '../../modules/projectIcons';
 import defaultCardImage from '../../assets/default-card-img.jpg';
 import { cardStyles } from '../../modules/panelStyles';
+import { CardPropIcon } from '../../modules/projectIcons';
 
 // Memoized Media Preview component
 const MediaPreview = memo(({ media }) => {
@@ -473,7 +474,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
   
   const renderPreviewSection = () => (
     <div style={cardStyles.section}>
-      <p>Preview</p>
+      <p style={{ fontSize: '18px', paddingLeft: 0 }}>Preview</p>
       <div style={cardStyles.previewList}>
         {cards && cards.length > 0 ? (
           cards.map((card) => (
@@ -486,7 +487,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
             />
           ))
         ) : (
-          <p style={{textAlign: 'center', color: '#666'}}>
+          <p style={{fontSize:'17px', textAlign: 'center', color: '#666'}}>
             No cards added yet. Click the "+" button to add a card.
           </p>
         )}
@@ -518,14 +519,15 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
         {activeTab === 'options' ? (
           <div style={cardStyles.container}>
             {/* Panel Header */}
-            <div style={{ width: "50px", height: "50px" }}>
-              {/* Replace with your card icon component */}
-              <BookImage size={40} color='#237804'/>
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <CardPropIcon />
+              </div>
+              <p>Card</p>
             </div>
             
             <hr/>
             <div style={{display: 'flex', marginBottom: '20px', justifyContent: 'space-between'}}>
-              <p>Card</p>
               <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -544,7 +546,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
               <>
                 {/* Header (Image/Video) Section */}
                 <div style={cardStyles.section}>
-                  <p>Header (Image or video)</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}}>Header (Image or video)</p>
                   <div style={cardStyles.uploadArea}>
                     <input 
                       className='media-upload-section'
@@ -561,7 +563,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
                 
                 {/* Body (Text) Section */}
                 <div style={cardStyles.section}>
-                  <p>Body</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}}>Body</p>
                   <div style={cardStyles.editorContainer}>
                     <LexicalComposer initialConfig={editorConfig}>
                       <div className="editor-container">
@@ -584,7 +586,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
                 
                 {/* Button Section */}
                 <div style={cardStyles.section}>
-                  <p>Button</p>
+                  <p style={{paddingLeft: 0, fontSize: '18px'}}>Button</p>
                   <div style={cardStyles.inputGroup}>
                     <select
                       value={buttonType}
@@ -598,7 +600,7 @@ const CardNodePropertyPanel = ({ node, setNodes }) => {
                   
                   <div>
                     <div style={cardStyles.labelInput}>
-                      <p>Label</p>
+                      <p style={{ fontSize: '15px' }}>Label</p>
                       <input
                         type="text"
                         placeholder="Reply"

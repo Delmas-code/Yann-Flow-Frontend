@@ -130,12 +130,15 @@ const VideoNodePropertyPanel = ({ node, setNodes, onClose }) => {
         {activeTab === 'options' ? (
           <div style={videoStyles.container}>
             {/* <PlayCircle size={40} fill="#237804" color='#EEEEEE'/> */}
-            <div style={{ width: "50px", height: "50px" }}>
-              <VideoPropIcon />
-          </div>
+            
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <VideoPropIcon />
+              </div>
+              <p>Video</p>
+            </div>
 
             <hr/>
-            <p>Video</p>
             
             <div style={videoStyles.uploadArea}>
               <input className='media-upload-section'

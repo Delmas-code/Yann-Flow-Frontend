@@ -166,8 +166,9 @@ const TextNodePropertyPanel = ({ node, setNodes, onClose }) => {
             {/* <div style={{ width: "50px", height: "50px" }}>
               <TextInputPropIcon />
             </div> */}
+
             <hr style={{marginTop: '-7px'}}/>
-            <p style={{marginTop: '-10px'}}>Text Content</p>
+            <p style={{marginTop: '-10px', marginLeft: '-10px', marginBlockEnd: '2px'}}>Text Content</p>
             
             <div style={textInputStyles.editorContainer}>
               <LexicalComposer initialConfig={editorConfig}>

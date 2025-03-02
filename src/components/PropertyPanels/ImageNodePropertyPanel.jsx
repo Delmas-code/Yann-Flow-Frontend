@@ -131,12 +131,15 @@ const ImageNodePropertyPanel = ({ node, setNodes, onClose }) => {
         {activeTab === 'options' ? (
           <div style={imageStyles.container}>
             {/* <Image size={40} fill="#237804" color='#EEEEEE'/> */}
-            <div style={{ width: "50px", height: "50px" }}>
-                <ImagePropIcon />
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <ImagePropIcon />
+              </div>
+              <p>Image</p>
             </div>
 
             <hr/>
-            <p>Image</p>
+            
             
             <div style={imageStyles.uploadArea}>
               <input className='media-upload-section'

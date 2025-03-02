@@ -140,12 +140,14 @@ const LocationNodePropertyPanel = ({ node, setNodes }) => {
       <div className="property-panel-content">
         {activeTab === 'options' ? (
           <div style={locationStyles.container}>
-            <div style={{ width: "50px", height: "50px" }}>
-                <LocationPropIcon />
+            <div style={{display: "flex"}}>
+                <div style={{ width: "32px", height: "32px",  }}>
+                    <LocationPropIcon />
+                </div>
+                <p>Location</p>
             </div>
 
             <hr/>
-            <p>Location</p>
             
             <div style={locationStyles.searchSection}>
                 <div style={locationStyles.inputGroup}>
@@ -191,7 +193,7 @@ const LocationNodePropertyPanel = ({ node, setNodes }) => {
 
                 <div style={locationStyles.coordinateInputs}>
                     <div style={locationStyles.longInput}>
-                        <p>Long</p>
+                        <p style={{ fontSize: '15px'}}>Long</p>
                         <input
                         style={locationStyles.input}
                         type="number"

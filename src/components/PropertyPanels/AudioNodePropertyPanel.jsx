@@ -132,12 +132,17 @@ const AudioNodePropertyPanel = ({ node, setNodes, onClose }) => {
         {activeTab === 'options' ? (
           <div style={audioStyles.container}>
             {/* <Mic size={40} color='#237804'/> */}
-            <div style={{ width: "50px", height: "50px" }}>
+            {/* <div style={{ width: "50px", height: "50px" }}>
               <AudioPropIcon />
+            </div> */}
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <AudioPropIcon />
+              </div>
+              <p>Audio</p>
             </div>
 
             <hr/>
-            <p>Audio</p>
             
             <div style={audioStyles.uploadArea}>
               <input className='media-upload-section'

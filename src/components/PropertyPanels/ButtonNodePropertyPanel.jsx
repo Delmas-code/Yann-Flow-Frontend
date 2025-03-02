@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { X, Pointer } from 'lucide-react';
 import { ExternalLinkIcon } from '../../modules/projectIcons';
 import { buttonStyles } from '../../modules/panelStyles';
+import { ButtonPropIcon } from '../../modules/projectIcons';
 
 const ButtonNodePropertyPanel = ({ node, setNodes }) => {
   const [activeTab, setActiveTab] = useState('options');
@@ -155,11 +156,15 @@ const ButtonNodePropertyPanel = ({ node, setNodes }) => {
       <div className="property-panel-content">
           {activeTab === 'options' ? (
             <div style={buttonStyles.container}>
-              <Pointer size={40} color='#237804'/>
+              <div style={{display: "flex"}}>
+                <div style={{ width: "32px", height: "32px",  }}>
+                    <ButtonPropIcon />
+                </div>
+                <p>Button</p>
+              </div>
 
               <hr/>
               <div style={{display: 'flex', marginBottom: '20px', gap:'70%'}}>
-                <p>Button</p>
                 <button
                   onClick={handleAddButton}
                   style={buttonStyles.addButton}
@@ -186,7 +191,7 @@ const ButtonNodePropertyPanel = ({ node, setNodes }) => {
 
                   <div>
                       <div style={buttonStyles.labelInput}>
-                          <p>Label</p>
+                          <p style={{ fontSize: '15px' }}>Label</p>
                           <input
                             type="text"
                             placeholder="Reply"

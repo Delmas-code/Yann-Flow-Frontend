@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Handle } from '@xyflow/react';
 import "@fontsource/outfit"
-import { MessagesIcon } from '../../modules/projectIcons';
+import { AIIcon } from '../../modules/projectIcons';
 import { Trash2, Copy, Edit3 } from 'lucide-react';
 
 const AINode = (props) => {
@@ -95,7 +95,7 @@ const AINode = (props) => {
             onMouseEnter={(e) => e.currentTarget.style.background = '#c8e6c9'}
             onMouseLeave={(e) => e.currentTarget.style.background = '#e8f5e9'}
           >
-            <MessagesIcon />
+            <AIIcon />
             <span>
               {entry.plainText 
                 ? (entry.plainText.length > 25 ? `${entry.plainText.slice(0, 25)}...` : entry.plainText) 

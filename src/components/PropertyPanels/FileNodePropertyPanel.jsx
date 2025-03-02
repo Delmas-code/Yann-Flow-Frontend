@@ -143,12 +143,14 @@ const FileNodePropertyPanel = ({ node, setNodes, onClose }) => {
       <div className="property-panel-content">
         {activeTab === 'options' ? (
           <div style={fileStyles.container}>
-            <div style={{ width: "50px", height: "50px" }}>
-              <FilePropIcon />
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <FilePropIcon />
+              </div>
+              <p>File</p>
             </div>
 
             <hr/>
-            <p>File</p>
             
             <div style={fileStyles.uploadArea}>
               <input className='media-upload-section'

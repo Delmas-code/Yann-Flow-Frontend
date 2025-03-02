@@ -354,7 +354,8 @@ const locationStyles = {
     marginBottom: '7px'
   },
   p: {
-    paddingRight: '13px',
+    paddingRight: '11px',
+    fontSize: '15px'
   }, 
   searchResults: {
     border: '1px solid #D1D5DB',
@@ -511,7 +512,7 @@ const buttonStyles = {
     marginBottom: '12px'
   },
   input: {
-    width: '90%',
+    width: '100%',
     padding: '8px 12px',
     border: '1px solid #D1D5DB',
     fontSize: '14px',
@@ -528,7 +529,8 @@ const buttonStyles = {
     marginBottom: '7px'
   },
   p: {
-    paddingRight: '13px',
+    paddingRight: '14px',
+    fontSize: '15px'
   }, 
   buttonsList: {
     display: 'flex',
@@ -626,10 +628,9 @@ const cardStyles = {
     marginBottom: '12px'
   },
   input: {
-    width: '90%',
+    width: '100%',
     padding: '8px 12px',
     border: '1px solid #D1D5DB',
-    borderRadius: '4px',
     fontSize: '14px',
     fontFamily: 'Outfit'
   },
@@ -650,7 +651,7 @@ const cardStyles = {
   
   editorContainer: {
     border: '1px solid #ddd',
-    borderRadius: '4px',
+    borderRadius: '1px',
     overflow: 'hidden',
   },
   editor: {
@@ -754,7 +755,8 @@ const cardStyles = {
     marginBottom: '7px'
   },
   p: {
-    paddingRight: '13px',
+    paddingRight: '14px',
+    fontSize: '15px'
   },
   selectedCard: {
     border: '2px solid #3b82f6',
@@ -795,10 +797,9 @@ const carouselStyles = {
     marginBottom: '12px'
   },
   input: {
-    width: '90%',
+    width: '100%',
     padding: '8px 12px',
     border: '1px solid #D1D5DB',
-    borderRadius: '4px',
     fontSize: '14px',
     fontFamily: 'Outfit'
   },
@@ -853,7 +854,7 @@ const carouselStyles = {
   },
   editorContainer: {
     border: '1px solid #ddd',
-    borderRadius: '4px',
+    borderRadius: '1px',
     overflow: 'hidden',
   },
   editor: {
@@ -990,7 +991,8 @@ const carouselStyles = {
     marginBottom: '7px'
   },
   p: {
-    paddingRight: '13px',
+    paddingRight: '14px',
+    fontSize: '15px'
   },
   selectedCarousel: {
     border: '2px solid #3b82f6',
@@ -1010,6 +1012,119 @@ const carouselStyles = {
 };
 
 
+const aiNodeStyles = {
+  container: {
+    padding: '15px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    // overflowX: 'hidden'
+  },
+  aiIcon: {
+    width: '50px',
+    height: '50px',
+    backgroundColor: '#4CAF50',
+    borderRadius: '4px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexShrink: 0,
+  },
+  editorContainer: {
+    border: '1px solid #ddd',
+    borderRadius: '1px',
+    overflow: 'hidden',
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  editor: {
+    minHeight: '100px',
+    resize: 'vertical',
+    overflow: 'auto',
+    padding: '10px',
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  modelSelector: {
+    marginTop: '15px',
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  modelLabel: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+    marginBottom: '8px',
+    fontWeight: '500',
+    position: 'relative',
+    fontFamily: 'Outfit',
+  },
+  infoIcon: {
+    cursor: 'help',
+    marginLeft: '4px',
+    position: 'relative',
+  },
+  tooltip: {
+    position: 'absolute',
+    top: '100%',
+    left: '0',
+    width: '220px',
+    padding: '8px 12px',
+    backgroundColor: '#333',
+    color: 'white',
+    borderRadius: '4px',
+    fontSize: '12px',
+    lineHeight: '1.4',
+    zIndex: 10,
+    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+    visibility: 'hidden',
+    opacity: 0,
+    transition: 'opacity 0.2s, visibility 0.2s',
+  },
+  tooltipVisible: {
+    visibility: 'visible',
+    opacity: 1,
+  },
+  dropdown: {
+    width: '100%',
+    padding: '8px 12px',
+    borderRadius: '1px',
+    border: '1px solid #ddd',
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
+  },
+  infoText: {
+    fontSize: '12px',
+    color: '#666',
+    marginTop: '5px',
+    fontFamily: 'Outfit',
+    maxWidth: '100%',
+  },
+  saveButton: {
+    backgroundColor: '#1976d2',
+    color: 'white',
+    border: 'none',
+    padding: '8px 16px',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '15px',
+    alignSelf: 'flex-start',
+  },
+  divider: {
+    width: '100%',
+    margin: 0,
+    border: 'none',
+    borderTop: '1px solid #eee',
+  },
+  promptLabel: {
+    fontSize: '17px',
+    paddingLeft: 0,
+    margin: '-10px 0 0 0',
+    fontFamily: 'Outfit',
+  }
+};
 
 const textInputStyles = {
   container: {
@@ -1139,4 +1254,4 @@ const voiceStyles = {
 
 
 export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, 
-        buttonStyles, cardStyles, textInputStyles, voiceStyles, carouselStyles }
+        buttonStyles, cardStyles, aiNodeStyles, textInputStyles, voiceStyles, carouselStyles }

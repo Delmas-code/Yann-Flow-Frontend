@@ -131,13 +131,14 @@ const VoiceNodePropertyPanel = ({ node, setNodes, onClose }) => {
       <div className="property-panel-content">
         {activeTab === 'options' ? (
           <div style={voiceStyles.container}>
-            {/* <Mic size={40} color='#237804'/> */}
-            <div style={{ width: "50px", height: "50px" }}>
-              <VoicePropIcon />
+            <div style={{display: "flex"}}>
+              <div style={{ width: "32px", height: "32px",  }}>
+                  <VoicePropIcon />
+              </div>
+              <p>Voice</p>
             </div>
 
             <hr/>
-            <p>Voice</p>
             
             <div style={voiceStyles.uploadArea}>
               <input className='media-upload-section'

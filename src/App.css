@@ -135,8 +135,10 @@
 
 .properties-panel {
     width: 290px;
-    background-color: #f5f5f5;
-    border-left: 1px solid #ddd;
+    /* background-color: #f5f5f5;
+    border-left: 1px solid #ddd; */
+    background-color: rgb(255, 255, 255);
+    border-left: 1px solid rgb(221, 221, 221);
     height: 100vh;
     position: absolute;
     top: 0;
@@ -173,17 +175,25 @@
 .property-panel-content {
     flex: 1;
     padding: 15px;
-    overflow-y: auto
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .property-panel-content hr {
-    width: 100%;
+    width: 122%;
     border: 1px solid #EEEEEE;
-    margin-left: 0
+    margin-left: -30px;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
 
 .property-panel-content p {
-    font-family: Outfit
+    /* margin-left: '200px'; */
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+    margin-top: 10px;
+    font-family: Outfit;
 }
 
 .media-upload-section {

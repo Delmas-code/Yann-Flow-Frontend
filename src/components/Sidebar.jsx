@@ -1,8 +1,10 @@
 // src/components/Sidebar.jsx
 import React, { useState } from 'react';
 import "@fontsource/outfit"
-import {MyNewIcon, WifiIcon,TicketIcon, TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
-  FileIcon, LocationIcon, ButtonIcon, MessagesIcon, CardIcon, VoiceIcon, CarouselIcon,
+import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon, 
+  collectionsIcon, transactionsIcon, invoicesIcon, creditCardIcon,
+  TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
+  FileIcon, LocationIcon, ButtonIcon, TextInputIcon, CardIcon, VoiceIcon, CarouselIcon,
   AIIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
@@ -25,17 +27,19 @@ const messageNodeTypes = [
 ];
 
 const listenToNodeTypes = [
-  { type: NodeTypes.TEXT_INPUT_NODE, label: 'Text', color: '#ffffff', textColor: '#000000', icon: MessagesIcon },
+  { type: NodeTypes.TEXT_INPUT_NODE, label: 'Text', color: '#ffffff', textColor: '#000000', icon: TextInputIcon },
   { type: NodeTypes.VOICE_NODE, label: 'Voice', color: '#ffffff', textColor: '#000000', icon: VoiceIcon },
 ];
 
 const appsNodeTypes = [
-  { type: 'airTime', label: 'Airtime', color: '#ffffff', textColor: '#000000', icon: TicketIcon },
-  { type: 'dataBundles', label: 'Data Bundles', color: '#ffffff', textColor: '#000000', icon: WifiIcon },
-  { type: 'vouchers', label: 'Vouchers', color: '#ffffff', textColor: '#000000', icon: TicketIcon },
-  { type: 'disbursments', label: 'Disbursments', color: '#ffffff', textColor: '#000000', icon: WifiIcon },
-  { type: 'collections', label: 'Collections', color: '#ffffff', textColor: '#000000', icon: TicketIcon },
-  { type: 'transactions', label: 'Transactions', color: '#ffffff', textColor: '#000000', icon: WifiIcon },
+  { type: 'airTime', label: 'Airtime', color: '#ffffff', textColor: '#000000', icon: airtimeIcon },
+  { type: 'dataBundles', label: 'Data Bundles', color: '#ffffff', textColor: '#000000', icon: dataBundlesIcon },
+  { type: 'vouchers', label: 'Vouchers', color: '#ffffff', textColor: '#000000', icon: VoucherIcon },
+  { type: 'disbursments', label: 'Disbursments', color: '#ffffff', textColor: '#000000', icon: disbursmentsIcon },
+  { type: 'collections', label: 'Collections', color: '#ffffff', textColor: '#000000', icon: collectionsIcon },
+  { type: 'transactions', label: 'Transactions', color: '#ffffff', textColor: '#000000', icon: transactionsIcon },
+  { type: 'invoices', label: 'Invoices', color: '#ffffff', textColor: '#000000', icon: invoicesIcon },
+  { type: 'card', label: 'Card', color: '#ffffff', textColor: '#000000', icon: creditCardIcon },
 ];
 
 const Sidebar = () => {
@@ -43,7 +47,10 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar" style={{
-      width: '25%',
+      width: '20%',
+      // width: '280px',
+      // overflowX: 'hidden',
+      // boxSizing: 'border-box',
       backgroundColor: '#ffffff',
       borderRight: '1px solid #ddd',
       height: '100vh',
@@ -52,7 +59,10 @@ const Sidebar = () => {
       left: 0,
       bottom: 0,
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      
+      // backgroundColor: 'rgb(255, 255, 255)',
+      // borderRight: '1px solid rgb(221, 221, 221)'
     }}>
         
       {/* Tab Navigation */}
