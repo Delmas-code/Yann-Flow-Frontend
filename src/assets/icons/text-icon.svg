@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- "T" letter with a text line underneath -->
+  <path d="M3 2h10v2H9v9H7V4H3V2z" fill="currentColor"/>
+  <path d="M2 14h12v1H2v-1z" fill="currentColor"/>
+</svg>

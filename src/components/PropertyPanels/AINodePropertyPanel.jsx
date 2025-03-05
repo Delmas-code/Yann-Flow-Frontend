@@ -39,6 +39,7 @@ const AINodePropertyPanel = ({ node, setNodes, onClose }) => {
   const [editorState, setEditorState] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
 
+  // TODO: Recheck AINODe creation
   // Load data when node ID changes
   useEffect(() => {
     if (node?.id) {

@@ -11,6 +11,14 @@ import CarouselNode from '../nodes/message/CarouselNode';
 import TextInputNode from '../nodes/listen_to/TextInputNode';
 import VoiceNode from '../nodes/listen_to/voiceNode';
 import AINode from '../nodes/message/AINode';
+import FilterNode from '../nodes/logic/FilterNode';
+import RandomizerNode from '../nodes/logic/RandomizerNode';
+import ConditionNode from '../nodes/logic/ConditionNode';
+import SmartDelayNode from '../nodes/logic/SmartDelayNode';
+import ApiNode from '../nodes/development/ApiNode';
+import CodeNode from '../nodes/development/CodeNode';
+import FunctionNode from '../nodes/development/FunctionNode';
+import VariableNode from '../nodes/development/VariableNode';
 
 const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closePropertiesPanel }) => {
   return useMemo(() => ({
@@ -114,6 +122,74 @@ const useNodeTypes = ({ deleteNode, duplicateNode, onNodeUpdate, closeProperties
     ),
     voiceNode: (props) => (
       <VoiceNode 
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    filterNode: (props) => (
+      <FilterNode
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    randomizerNode: (props) => (
+      <RandomizerNode
+        {...props}
+        deleteNode={deleteNode}
+        onNodeUpdate={onNodeUpdate}
+      />
+    ),
+    conditionNode: (props) => (
+      <ConditionNode
+        {...props}
+        deleteNode={deleteNode}
+        onNodeUpdate={onNodeUpdate}
+      />
+    ),
+    smartDelayNode: (props) => (
+      <SmartDelayNode
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    apiNode: (props) => (
+      <ApiNode
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    codeNode: (props) => (
+      <CodeNode
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    functionNode: (props) => (
+      <FunctionNode
+        {...props}
+        deleteNode={deleteNode}
+        duplicateNode={duplicateNode}
+        onNodeUpdate={onNodeUpdate}
+        closePropertiesPanel={closePropertiesPanel}
+      />
+    ),
+    variableNode: (props) => (
+      <VariableNode
         {...props}
         deleteNode={deleteNode}
         duplicateNode={duplicateNode}

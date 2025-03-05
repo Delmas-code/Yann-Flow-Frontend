@@ -5,7 +5,8 @@ import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon,
   collectionsIcon, transactionsIcon, invoicesIcon, creditCardIcon,
   TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
   FileIcon, LocationIcon, ButtonIcon, TextInputIcon, CardIcon, VoiceIcon, CarouselIcon,
-  AIIcon
+  AIIcon, SmartDelayIcon1, RandomizerIcon1, ConditionIcon1, FilterIcon, ApiIcon, CodeIcon,
+  CustomFunctionIcon, VariableIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
@@ -31,6 +32,20 @@ const listenToNodeTypes = [
   { type: NodeTypes.VOICE_NODE, label: 'Voice', color: '#ffffff', textColor: '#000000', icon: VoiceIcon },
 ];
 
+const logicNodeTypes = [
+  { type: NodeTypes.FILTER_NODE, label: 'Filter', color: '#ffffff', textColor: '#000000', icon: FilterIcon },
+  { type: NodeTypes.RANDOMIZER_NODE, label: 'Randomizer', color: '#ffffff', textColor: '#000000', icon: RandomizerIcon1 },
+  { type: NodeTypes.CONDITION_NODE, label: 'Condition', color: '#ffffff', textColor: '#000000', icon: ConditionIcon1 },
+  { type: NodeTypes.SMART_DELAY_NODE, label: 'Smart Delay', color: '#ffffff', textColor: '#000000', icon: SmartDelayIcon1 },
+];
+
+const developmentNodeTypes = [
+  { type: "NodeTypes.API_NODE", label: 'API', color: '#ffffff', textColor: '#000000', icon: ApiIcon },
+  { type: NodeTypes.CODE_NODE, label: 'Javascript', color: '#ffffff', textColor: '#000000', icon: CodeIcon },
+  { type: "NodeTypes.FUNCTION_NODE", label: 'Function', color: '#ffffff', textColor: '#000000', icon: CustomFunctionIcon },
+  { type: NodeTypes.VARIABLE_NODE, label: 'Set Variable', color: '#ffffff', textColor: '#000000', icon: VariableIcon },
+];
+
 const appsNodeTypes = [
   { type: 'airTime', label: 'Airtime', color: '#ffffff', textColor: '#000000', icon: airtimeIcon },
   { type: 'dataBundles', label: 'Data Bundles', color: '#ffffff', textColor: '#000000', icon: dataBundlesIcon },
@@ -47,7 +62,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar" style={{
-      width: '20%',
+      width: '22%',
       // width: '280px',
       // overflowX: 'hidden',
       // boxSizing: 'border-box',
@@ -120,6 +135,14 @@ const Sidebar = () => {
             <NodeHolder
                 title={"Listen To"}
                 nodeTypes = {listenToNodeTypes}
+            />
+            <NodeHolder
+                title={"Logic"}
+                nodeTypes = {logicNodeTypes}
+            />
+            <NodeHolder
+                title={"Development"}
+                nodeTypes = {developmentNodeTypes}
             />
             
           </>

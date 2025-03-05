@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Handle } from '@xyflow/react';
-import { ButtonIcon } from '../../modules/projectIcons';
+import { FilterIcon } from '../../modules/projectIcons';
 import { Trash2, Copy, Edit3 } from 'lucide-react';
 import DeleteConfirmationModal from '../../modules/deleteConfirmationModal';
 
   
 
-const ButtonNode = (props) => {
+const FilterNode = (props) => {
    
   const { data, isConnectable, selected, id } = props;
   const { deleteNode, duplicateNode, closePropertiesPanel } = props;
 
   const [isEditing, setIsEditing] = useState(false);
-  const [nodeName, setNodeName] = useState(data.title || 'Button Block');
-      const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-    
+  const [nodeName, setNodeName] = useState(data.title || 'Filter Block');
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
   const handleNameChange = (e) => {
     setNodeName(e.target.value);
   };
@@ -53,17 +53,23 @@ const ButtonNode = (props) => {
   return (
     <>
       <div
-        className={`media-node button-node ${selected ? 'selected' : ''}`}
+        className={`media-node filter-node ${selected ? 'selected' : ''}`}
         
       >
         <Handle type="target" position="left" />
+        {/* <Handle 
+          type="target"
+          position={Position.Left}
+          onConnect={(params) => console.log('handle onConnect', params)}
+          isConnectable={isConnectable}
+        /> */}
         
         {/* Action buttons that appear when selected */}
         {selected && (
           <div className="node-actions">
             <button className="delete-node"
-                onClick={() => setShowDeleteConfirmation(true)}
-                title="Delete node"
+              onClick={() => setShowDeleteConfirmation(true)}
+              title="Delete node"
             >
               <Trash2 size={16} />
             </button>
@@ -101,25 +107,25 @@ const ButtonNode = (props) => {
           )}
         </div>
 
-        <div className="media-list button-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {data.buttons?.slice(0, 3).map((button, index) => (
+        <div className="media-list filter-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {data.filters?.slice(0, 3).map((filter, index) => (
             <div
               key={index}
-              className="media-item button-item"
+              className="media-item filter-item"
               style={{
                 
               }}
               onMouseEnter={(e) => e.currentTarget.style.background = '#c8e6c9'}
               onMouseLeave={(e) => e.currentTarget.style.background = '#e8f5e9'}
             >
-              <ButtonIcon />
-              <span>{button.name ? (button.name.length > 25 ? `${button.name.slice(0, 25)}...` : button.name) : `Button ${index + 1}`}</span>
+              <FilterIcon />
+              <span>{filter.name ? (filter.name.length > 25 ? `${filter.name.slice(0, 25)}...` : filter.name) : `Filter ${index + 1}`}</span>
             </div>
           ))}
           
-          {data.buttons?.length > 3 && (
+          {data.filters?.length > 3 && (
             <div style={{ color: '#666', fontSize: '0.8em' }}>
-              + {data.buttons.length - 3} more buttons
+              + {data.filters.length - 3} more filters
             </div>
           )}
         </div>
@@ -137,4 +143,4 @@ const ButtonNode = (props) => {
   );
 };
 
-export default ButtonNode;
+export default FilterNode;

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Handle } from '@xyflow/react';
-import { AudioIcon } from '../../modules/projectIcons';
+import { VariableIcon } from '../../modules/projectIcons';
 import { Trash2, Copy, Edit3 } from 'lucide-react';
 import DeleteConfirmationModal from '../../modules/deleteConfirmationModal';
 
   
 
-const AudioNode = (props) => {
+const VariableNode = (props) => {
    
   const { data, isConnectable, selected, id } = props;
   const { deleteNode, duplicateNode, closePropertiesPanel } = props;
 
   const [isEditing, setIsEditing] = useState(false);
-  const [nodeName, setNodeName] = useState(data.title || 'Audio Block');
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
+  const [nodeName, setNodeName] = useState(data.title || 'Variable Block');
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    
   const handleNameChange = (e) => {
     setNodeName(e.target.value);
   };
@@ -52,88 +52,82 @@ const AudioNode = (props) => {
 
   return (
     <>
-      <div
-        className={`media-node audio-node ${selected ? 'selected' : ''}`}
+        <div
+        className={`media-node variable-node ${selected ? 'selected' : ''}`}
         
-      >
+        >
         <Handle type="target" position="left" />
-        {/* <Handle 
-          type="target"
-          position={Position.Left}
-          onConnect={(params) => console.log('handle onConnect', params)}
-          isConnectable={isConnectable}
-        /> */}
         
         {/* Action buttons that appear when selected */}
         {selected && (
-          <div className="node-actions">
+            <div className="node-actions">
             <button className="delete-node"
               onClick={() => setShowDeleteConfirmation(true)}
               title="Delete node"
             >
-              <Trash2 size={16} />
+                <Trash2 size={16} />
             </button>
 
             <button className="duplicate-node"
-              onClick={() => duplicateNode(id)}
-              title="Duplicate node"
+                onClick={() => duplicateNode(id)}
+                title="Duplicate node"
             >
-              <Copy size={16} />
+                <Copy size={16} />
             </button>
-          </div>
+            </div>
         )}
         
         <div className="node-header">
-          {isEditing ? (
+            {isEditing ? (
             <input
-              type="text"
-              value={nodeName}
-              onChange={handleNameChange}
-              onBlur={handleNameSubmit}
-              onKeyDown={handleKeyDown}
-              autoFocus
+                type="text"
+                value={nodeName}
+                onChange={handleNameChange}
+                onBlur={handleNameSubmit}
+                onKeyDown={handleKeyDown}
+                autoFocus
             />
-          ) : (
+            ) : (
             <h3>{nodeName}</h3>
-          )}
-          
-          {selected && !isEditing && (
+            )}
+            
+            {selected && !isEditing && (
             <button
-              onClick={() => setIsEditing(true)}
-              title="Rename node"
+                onClick={() => setIsEditing(true)}
+                title="Rename node"
             >
-              <Edit3 size={14} />
+                <Edit3 size={14} />
             </button>
-          )}
+            )}
         </div>
 
-        <div className="media-list audio-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          {data.audios?.slice(0, 3).map((audio, index) => (
+        <div className="media-list variable-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {data.variables?.slice(0, 3).map((variable, index) => (
             <div
-              key={index}
-              className="media-item audio-item"
-              style={{
+                key={index}
+                className="media-item variable-item"
+                style={{
                 
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#c8e6c9'}
-              onMouseLeave={(e) => e.currentTarget.style.background = '#e8f5e9'}
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#c8e6c9'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#e8f5e9'}
             >
-              <AudioIcon />
-              <span>{audio.name ? (audio.name.length > 25 ? `${audio.name.slice(0, 25)}...` : audio.name) : `Audio ${index + 1}`}</span>
+                <VariableIcon />
+                <span>{variable.name ? (variable.name.length > 25 ? `${variable.name.slice(0, 25)}...` : variable.name) : `Variable ${index + 1}`}</span>
             </div>
-          ))}
-          
-          {data.audios?.length > 3 && (
+            ))}
+            
+            {data.variables?.length > 3 && (
             <div style={{ color: '#666', fontSize: '0.8em' }}>
-              + {data.audios.length - 3} more audios
+                + {data.variables.length - 3} more variables
             </div>
-          )}
+            )}
         </div>
 
         <Handle type="source" position="right" />
-      </div>
-      {/* Delete Confirmation Modal */}
-      {showDeleteConfirmation && (
+        </div>
+        {/* Delete Confirmation Modal */}
+        {showDeleteConfirmation && (
         <DeleteConfirmationModal 
           onConfirm={confirmDelete}
           onCancel={cancelDelete}
@@ -143,4 +137,4 @@ const AudioNode = (props) => {
   );
 };
 
-export default AudioNode;
+export default VariableNode;

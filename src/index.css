@@ -1,4 +1,5 @@
 @import url('./xy-theme.css');
 @import url('./App.css');
 @import url('./editor/editorStyles.css');
+@import url('./components/PropertyPanels/APINodePropertyPanel.css');
 

@@ -240,3 +240,81 @@
     width: 8px !important;
     height: 8px !important;
 }
+
+
+/* Custom Style for Smart Delay Nodes */
+.smart-delay {
+    background-color: #237804;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: none; 
+    box-shadow: none; 
+    padding: 0; 
+    font-size: 14px;
+}
+
+.smart-delay:hover {
+    background-color: #2ca02c; 
+}
+
+
+.smart-delay.selected {
+    outline: 1px solid #2b550f;
+    background-color: #2ca02c;
+}
+
+
+
+/* Custom Style for Randomizer Nodes */
+.randomizer {
+    background-color: #237804;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+    color: white;
+    font-weight: bold
+}
+
+.randomizer:hover {
+    background-color: #2ca02c; 
+}
+
+
+.randomizer.selected {
+    outline: 1px solid #2b550f;
+    background-color: #2ca02c;
+}
+
+
+
+/* Custom Style for Condition Nodes */
+.condition {
+    background-color: #237804;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+    color: white;
+    font-weight: bold
+}
+
+.condition:hover {
+    background-color: #2ca02c; 
+}
+
+
+.condition.selected {
+    outline: 1px solid #2b550f;
+    background-color: #2ca02c;
+}
+

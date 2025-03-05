@@ -25,7 +25,15 @@ const useFlowBuilder = () => {
     addCarouselNode,
     addAINode,
     addTextInputNode,
-    addVoiceNode
+    addVoiceNode,
+    addFilterNode,
+    addSmartDelayNode,
+    addRandomizerNode,
+    addConditionNode,
+    addApiNode,
+    addCodeNode,
+    addFunctionNode,
+    addVariableNode
   } = useNodeActions(setNodes, setEdges, setSelectedNode, selectedNode);
 
   const nodeTypes = useNodeTypes({ deleteNode, duplicateNode, onNodeUpdate, closePropertiesPanel });
@@ -83,12 +91,30 @@ const useFlowBuilder = () => {
       addTextInputNode(position, type);
     } else if (type === NodeTypes.VOICE_NODE) {
       addVoiceNode(position, type);
+    } else if (type === NodeTypes.FILTER_NODE) {
+      addFilterNode(position, type);
+    } else if (type === NodeTypes.RANDOMIZER_NODE) {
+      addRandomizerNode(position, type);
+    } else if (type === NodeTypes.CONDITION_NODE) {
+      addConditionNode(position, type);
+    } else if (type === NodeTypes.SMART_DELAY_NODE) {
+      addSmartDelayNode(position, type);
+    } else if (type === NodeTypes.API_NODE) {
+      addApiNode(position, type);
+    } else if (type === NodeTypes.CODE_NODE) {
+      addCodeNode(position, type);
+    } else if (type === NodeTypes.FUNCTION_NODE) {
+      addFunctionNode(position, type);
+    } else if (type === NodeTypes.VARIABLE_NODE) {
+      addVariableNode(position, type);
     }
     
 
   }, [
     addImageNode, addVideoNode, addAudioNode, addFileNode,addLocationNode, addButtonNode, 
-    addCardNode, addCarouselNode, addAINode, addTextInputNode, addVoiceNode, setNodesWithPanelUpdate
+    addCardNode, addCarouselNode, addAINode, addTextInputNode, addVoiceNode, addFilterNode,
+    addRandomizerNode, addConditionNode, addSmartDelayNode, addApiNode, addCodeNode, 
+    addFunctionNode, addVariableNode, setNodesWithPanelUpdate
   ]);
 
   const onDragOver = useCallback((event) => {

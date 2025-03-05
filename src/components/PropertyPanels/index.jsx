@@ -13,7 +13,14 @@ import TextInputNodePropertyPanel from './TextInputNodePropertyPanel';
 import VoiceNodePropertyPanel from './VoiceNodePropertyPanel';
 import CarouselNodePropertyPanel from './CarouselNodePropertyPanel ';
 import AINodePropertyPanel from './AINodePropertyPanel';
-
+import FilterNodePropertyPanel from './FilterNodePropertyPanel';
+import ConditionNodePropertyPanel from './ConditionNodeNodePropertyPanel';
+import RandomizerNodePropertyPanel from './RandomizerNodeNodePropertyPanel';
+import SmartDelayNodePropertyPanel from './SmartNodeNodePropertyPanel';
+import APINodePropertyPanel from './ApiNodePropertyPanel';
+import CodeNodePropertyPanel from './CodeNodePropertyPanel';
+import FunctionNodePropertyPanel from './FunctionNodePropertyPanel';
+import VariableNodePropertyPanel from './VariableNodePropertyPanel';
 const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
   const propertyPanels = {
     [NodeTypes.IMAGE_NODE]: ImagePropertyPanel,
@@ -28,6 +35,15 @@ const PropertiesPanel = ({ selectedNode, setNodes, onClose }) => {
     [NodeTypes.AI_NODE]: AINodePropertyPanel,
     [NodeTypes.TEXT_INPUT_NODE]: TextInputNodePropertyPanel,
     [NodeTypes.VOICE_NODE]: VoiceNodePropertyPanel,
+    [NodeTypes.FILTER_NODE]: FilterNodePropertyPanel,
+    [NodeTypes.RANDOMIZER_NODE]: RandomizerNodePropertyPanel,
+    [NodeTypes.CONDITION_NODE]: ConditionNodePropertyPanel,
+
+    [NodeTypes.SMART_DELAY_NODE]: SmartDelayNodePropertyPanel,
+    [NodeTypes.API_NODE]: APINodePropertyPanel,
+    [NodeTypes.CODE_NODE]: CodeNodePropertyPanel,
+    [NodeTypes.FUNCTION_NODE]: FunctionNodePropertyPanel,
+    [NodeTypes.VARIABLE_NODE]: VariableNodePropertyPanel,
     default: DefaultPropertiesPanel
   };
 

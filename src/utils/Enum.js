@@ -13,6 +13,13 @@ export const NodeTypes = {
     AI_NODE: 'aiNode',
     TEXT_INPUT_NODE: 'textInputNode',
     VOICE_NODE: 'voiceNode',
-    
+    FILTER_NODE: 'filterNode',
+    RANDOMIZER_NODE: 'randomizerNode',
+    CONDITION_NODE: 'conditionNode',
+    SMART_DELAY_NODE: 'smartDelayNode',
+    API_NODE: 'apiNode',
+    CODE_NODE: 'codeNode',
+    FUNCTION_NODE: 'functionNode',
+    VARIABLE_NODE: 'variableNode',
     
 }

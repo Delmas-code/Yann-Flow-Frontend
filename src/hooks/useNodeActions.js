@@ -99,6 +99,27 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
         case NodeTypes.VOICE_NODE:
           newNode.data.voice = cloneMediaArray(nodeToClone.data.voice, 'voice');
           break;
+
+        case NodeTypes.FILTER_NODE:
+            newNode.data.filters = cloneMediaArray(nodeToClone.data.filters, 'filter');
+            break;
+        
+        case NodeTypes.SMART_DELAY_NODE:
+          newNode.data.delayTime = nodeToClone.data.delayTime;
+          newNode.data.formatting = cloneDeep(nodeToClone.data.formatting);
+          break;
+        case NodeTypes.API_NODE:
+            newNode.data.apis = cloneMediaArray(nodeToClone.data.apis, 'api');
+            break;
+        case NodeTypes.API_NODE:
+          newNode.data.codes = cloneMediaArray(nodeToClone.data.codes, 'code');
+          break;
+        case NodeTypes.API_NODE:
+          newNode.data.customFunctions = cloneMediaArray(nodeToClone.data.customFunctions, 'customFunction');
+          break;
+        case NodeTypes.API_NODE:
+          newNode.data.variables = cloneMediaArray(nodeToClone.data.variables, 'variable');
+          break;
         
 
         default:
@@ -302,6 +323,123 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     setNodesWithPanelUpdate((nds) => nds.concat(newNode));
   }, [setNodesWithPanelUpdate, onNodeUpdate]);
 
+  const addFilterNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Filter Block',
+        label: `New ${type}`,
+        filters: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+  const addSmartDelayNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Smart Delay Block',
+        label: `New ${type}`,
+        delayTime: {},
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+  const addRandomizerNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Randomizer Block',
+        label: `New ${type}`,
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+  const addConditionNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Condition Block',
+        label: `New ${type}`,
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+  const addApiNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'API Block',
+        label: `New ${type}`,
+        apis: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+  const addCodeNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Code Block',
+        label: `New ${type}`,
+        codes: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+  const addFunctionNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Function Block',
+        label: `New ${type}`,
+        customFunctions: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+  const addVariableNode = useCallback((position, type) => {
+    const newNode = {
+      id: `node_${type}_${Date.now()}`,
+      type,
+      position,
+      data: { 
+        title: 'Variable Block',
+        label: `New ${type}`,
+        variables: [],
+        onNodeUpdate
+      }
+    };
+    setNodesWithPanelUpdate((nds) => nds.concat(newNode));
+  }, [setNodesWithPanelUpdate, onNodeUpdate]);
+
+
   return {
     addImageNode,
     addVideoNode,
@@ -314,12 +452,19 @@ const useNodeActions = (setNodes, setEdges, setSelectedNode, selectedNode) => {
     addAINode,
     addTextInputNode,
     addVoiceNode,
+    addFilterNode,
+    addSmartDelayNode,
+    addRandomizerNode,
+    addConditionNode,
+    addApiNode,
+    addCodeNode,
+    addFunctionNode,
+    addVariableNode,
     deleteNode,
     duplicateNode,
     onNodeUpdate,
     setNodesWithPanelUpdate,
     closePropertiesPanel,
-    // Remove this line: handleAddImageNode
   };
 };
 
