@@ -6,7 +6,7 @@ import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon,
   TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
   FileIcon, LocationIcon, ButtonIcon, TextInputIcon, CardIcon, VoiceIcon, CarouselIcon,
   AIIcon, SmartDelayIcon1, RandomizerIcon1, ConditionIcon1, FilterIcon, ApiIcon, CodeIcon,
-  CustomFunctionIcon, VariableIcon
+  CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
@@ -44,6 +44,14 @@ const developmentNodeTypes = [
   { type: NodeTypes.CODE_NODE, label: 'Javascript', color: '#ffffff', textColor: '#000000', icon: CodeIcon },
   { type: "NodeTypes.FUNCTION_NODE", label: 'Function', color: '#ffffff', textColor: '#000000', icon: CustomFunctionIcon },
   { type: NodeTypes.VARIABLE_NODE, label: 'Set Variable', color: '#ffffff', textColor: '#000000', icon: VariableIcon },
+];
+
+
+const resourceNodeTypes = [
+  { type: "NodeTypes.Contacts", label: 'Contacts', color: '#237804', textColor: '#ffffff', icon: ContactsIcon },
+  { type: "NodeTypes.Library", label: 'Library', color: '#237804', textColor: '#ffffff', icon: LibraryIcon },
+  { type: "NodeTypes.Tutorials", label: 'Tutorials', color: '#ffffff', textColor: '#000000', icon: TutorialIcon },
+  { type: "NodeTypes.Support", label: 'Support', color: '#ffffff', textColor: '#000000', icon: SupportIcon },
 ];
 
 const appsNodeTypes = [
@@ -143,6 +151,10 @@ const Sidebar = () => {
             <NodeHolder
                 title={"Development"}
                 nodeTypes = {developmentNodeTypes}
+            />
+            <NodeHolder
+                title={"Resources"}
+                nodeTypes = {resourceNodeTypes}
             />
             
           </>
