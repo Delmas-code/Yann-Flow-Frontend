@@ -1,6 +1,6 @@
 
 
-const NodeHolder = ({ title, nodeTypes}) => {
+const NodeHolder = ({ title, nodeTypes, icon }) => {
 
     const onDragStart = (event, nodeType) => {
         event.dataTransfer.setData('application/reactflow', nodeType);
@@ -9,15 +9,18 @@ const NodeHolder = ({ title, nodeTypes}) => {
 
     return (
         <div className="nodes-tab">
-            <h3 style={{ 
-                marginTop: 0, 
-                marginBottom: '15px',
-                fontWeight: '400',
-                fontSize: '16px',
-                fontFamily:'Outfit',
-                lineHeight: '18px',
-                paddingTop: '5px',
-                    }}>{title}</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {icon && <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span>}
+                <h3 style={{ 
+                    marginTop: 0, 
+                    marginBottom: '7px',
+                    fontWeight: '400',
+                    fontSize: '16px',
+                    fontFamily:'Outfit',
+                    lineHeight: '18px',
+                    paddingTop: '5px',
+                        }}>{title}</h3>
+            </div>
             <hr style={{
                 // width:'275px',
                 width: '111%',

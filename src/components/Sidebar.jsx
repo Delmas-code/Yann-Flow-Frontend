@@ -6,10 +6,11 @@ import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon,
   TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
   FileIcon, LocationIcon, ButtonIcon, TextInputIcon, CardIcon, VoiceIcon, CarouselIcon,
   AIIcon, SmartDelayIcon1, RandomizerIcon1, ConditionIcon1, FilterIcon, ApiIcon, CodeIcon,
-  CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon
+  CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon, PottaIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
+// import defaultCardImage from '../assets/potta.png';
 
 // import myImage from '../assets/potta.png';
 
@@ -160,30 +161,14 @@ const Sidebar = () => {
           </>
           
         ) : (
-          <div className="apps-tab">
-            {/* <img src='C:/Users/User/Desktop/Ongoing Project/Instanvi/Yann Flow/Frontend/yann-flow/src/assets/potta.PNG'></img> */}
-            <NodeHolder
-                title={"Potta"}
-                nodeTypes = {appsNodeTypes}
-            />
-            {/* <img src={myImage} alt="Description" />
-            <h3 style={{ 
-                marginTop: 0, 
-                marginBottom: '15px',
-                fontWeight: '400',
-                fontSize: '16px',
-                fontFamily:'Outfit',
-                lineHeight: '18px',
-                paddingTop: '5px',
-                    }}>Potta</h3>
-            <hr style={{
-                width:'100%',
-                textAlign:'left',
-                border: '1px solid #EEEEEE',
-                marginLeft:'0'
-                }} ></hr> */}
-            
-            
+          <div className="apps-tab" style={{display: 'flex'}}>
+            <div>
+              <NodeHolder
+                  title={"Potta"}
+                  nodeTypes = {appsNodeTypes}
+                  icon = {<PottaIcon size={18} />}
+              />
+            </div>  
           </div>
         )}
       </div>
