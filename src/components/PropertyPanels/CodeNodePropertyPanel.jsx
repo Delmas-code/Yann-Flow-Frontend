@@ -6,113 +6,7 @@ import { javascript } from '@codemirror/lang-javascript';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import { CodeIcon } from '../../modules/projectIcons';
 import { PlusCircle } from 'lucide-react';
-
-const javascriptNodeStyles = {
-  container: {
-    padding: '10px',
-    fontFamily: 'Arial, sans-serif',
-  },
-  headerContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '10px',
-  },
-  iconContainer: {
-    width: '32px',
-    height: '32px',
-    marginRight: '10px',
-  },
-  headerText: {
-    margin: 0,
-    fontSize: '16px',
-  },
-  divider: {
-    margin: '10px 0',
-    border: 'none',
-    borderTop: '1px solid #e0e0e0',
-  },
-  codeList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px',
-    marginTop: '16px'
-  },
-  codeItem: {
-    position: 'relative',
-    width: '90%',
-    backgroundColor: '#f8f9fa',
-    border: '1px solid #e9ecef',
-    borderRadius: '4px',
-    padding: '8px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px'
-  },
-  codeIcon: {
-    width: '32px',
-    height: '32px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0
-  },
-  codeDetails: {
-    flex: 1,
-    overflow: 'hidden'
-  },
-  codeName: {
-    margin: 0,
-    fontSize: '14px',
-    fontWeight: 500,
-    color: '#212529',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
-  },
-  codeSplit: {
-    margin: 0, 
-    color: '#666', 
-    fontSize: '0.8em',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    maxWidth: '200px'
-  },
-  removeButton: {
-    position: 'absolute',
-    top: '-8px',
-    right: '-8px',
-    backgroundColor: '#ef4444',
-    color: 'white',
-    border: 'none',
-    borderRadius: '50%',
-    width: '24px',
-    height: '24px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '4px'
-  },
-    addButton: {
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '5px',
-        border: '1px solid #237804',
-        borderRadius: '1px',
-        padding: '8px 12px',
-        cursor: 'pointer',
-        marginTop: '10px',
-        
-    },
-  codeMirrorContainer: {
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    marginBottom: '10px',
-  }
-};
-
+import { codeNodeStyles } from '../../modules/panelStyles';
 
 const CodeNodePropertyPanel = ({ node, setNodes, onClose }) => {
   const [activeTab, setActiveTab] = useState('options');
@@ -180,7 +74,7 @@ function example() {
   };
 
   return (
-    <div className="properties-panel" style={javascriptNodeStyles.container}>
+    <div className="properties-panel" style={codeNodeStyles.container}>
       {/* Tab Navigation */}
       <div className="property-panel-tabs">
         <button
@@ -201,17 +95,17 @@ function example() {
       <div className="property-panel-content">
         {activeTab === 'options' ? (
           <div>
-            <div style={javascriptNodeStyles.headerContainer}>
-              <div style={javascriptNodeStyles.iconContainer}>
+            <div style={codeNodeStyles.headerContainer}>
+              <div style={codeNodeStyles.iconContainer}>
                 <CodePropIcon />
               </div>
-              {/* <p style={javascriptNodeStyles.headerText}>Javascript Node</p> */}
+              {/* <p style={codeNodeStyles.headerText}>Javascript Node</p> */}
             </div>
             
-            <hr style={javascriptNodeStyles.divider}/>
+            <hr style={codeNodeStyles.divider}/>
 
             {/* Code Editor */}
-            <div style={javascriptNodeStyles.codeMirrorContainer}>
+            <div style={codeNodeStyles.codeMirrorContainer}>
               <CodeMirror
                 value={codeSnippet}
                 height="300px"
@@ -224,12 +118,12 @@ function example() {
             {/* Add Code Button */}
             {/* <button 
               onClick={addCode}
-              style={javascriptNodeStyles.addButton}
+              style={codeNodeStyles.addButton}
             >
               Add Code
             </button> */}
             <button 
-              style={javascriptNodeStyles.addButton}
+              style={codeNodeStyles.addButton}
               onClick={addCode}
             >
               <PlusCircle size={16} color="#237804"/>
@@ -237,23 +131,23 @@ function example() {
             </button>
 
             {/* Codes List */}
-            <div style={javascriptNodeStyles.codeList}>
+            <div style={codeNodeStyles.codeList}>
               {codes.map(code => (
-                <div key={code.id} style={javascriptNodeStyles.codeItem}>
-                    <div style={javascriptNodeStyles.codeIcon}>
+                <div key={code.id} style={codeNodeStyles.codeItem}>
+                    <div style={codeNodeStyles.codeIcon}>
                         <CodeIcon size={24} color="#4B5563" />
                     </div>
-                  <div style={javascriptNodeStyles.codeDetails}>
-                    <p style={javascriptNodeStyles.codeName}>
+                  <div style={codeNodeStyles.codeDetails}>
+                    <p style={codeNodeStyles.codeName}>
                       {code.name}
                     </p>
-                    <p style={javascriptNodeStyles.codeSplit}>
+                    <p style={codeNodeStyles.codeSplit}>
                       {code.code.split('\n')[0]}
                     </p>
                   </div>
                   <button 
                     onClick={() => removeCode(code.id)}
-                    style={javascriptNodeStyles.removeButton}
+                    style={codeNodeStyles.removeButton}
                   >
                     <X size={16} />
                   </button>

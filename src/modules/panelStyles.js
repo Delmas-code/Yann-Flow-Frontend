@@ -1250,8 +1250,518 @@ const voiceStyles = {
 };
 
 
+const filterNodeStyles = {
+  container: {
+    padding: '10px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  headerContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+  iconContainer: {
+    width: '32px',
+    height: '32px',
+    marginRight: '10px',
+  },
+  headerText: {
+    margin: 0,
+    fontSize: '16px',
+  },
+  inputContainer: {
+    marginBottom: '10px',
+  },
+  input: {
+    width: '90%',
+    padding: '8px 12px',
+    border: '1px solid #D1D5DB',
+    fontSize: '14px',
+    fontFamily: 'Outfit'
+  },
+    selectInput: {
+    width: '100%',
+    padding: '8px 12px',
+    borderRadius: '1px',
+    border: '1px solid #ddd',
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    },
+    addButton: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px',
+        border: '1px solid #237804',
+        borderRadius: '1px',
+        padding: '8px 12px',
+        cursor: 'pointer',
+        marginTop: '10px',
+        // '&:hover': {
+        //   backgroundColor: 'rgb(138, 207, 113)'
+        // }
+    },
+    filterList: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        marginTop: '16px'
+      },
+    filterItem: {
+        position: 'relative',
+        width: '90%',
+        backgroundColor: '#f8f9fa',
+        border: '1px solid #e9ecef',
+        borderRadius: '4px',
+        padding: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px'
+      },
+    filterIcon: {
+        width: '32px',
+        height: '32px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0
+      },
+    filterDetails: {
+        flex: 1,
+        overflow: 'hidden'
+      },
+    filterName: {
+        margin: 0,
+        fontSize: '14px',
+        fontWeight: 500,
+        color: '#212529',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+      },
+    filterExp: {
+        margin: 0,
+        fontSize: '12px',
+        color: '#6c757d'
+      },
+    removeButton: {
+        position: 'absolute',
+        top: '-8px',
+        right: '-8px',
+        backgroundColor: '#ef4444',
+        color: 'white',
+        border: 'none',
+        borderRadius: '50%',
+        width: '24px',
+        height: '24px',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '4px'
+      },
+  divider: {
+    margin: '10px 0',
+    border: 'none',
+    borderTop: '1px solid #e0e0e0',
+  },
+};
+
+
+const codeNodeStyles = {
+  container: {
+    padding: '10px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  headerContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+  iconContainer: {
+    width: '32px',
+    height: '32px',
+    marginRight: '10px',
+  },
+  headerText: {
+    margin: 0,
+    fontSize: '16px',
+  },
+  divider: {
+    margin: '10px 0',
+    border: 'none',
+    borderTop: '1px solid #e0e0e0',
+  },
+  codeList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    marginTop: '16px'
+  },
+  codeItem: {
+    position: 'relative',
+    width: '90%',
+    backgroundColor: '#f8f9fa',
+    border: '1px solid #e9ecef',
+    borderRadius: '4px',
+    padding: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px'
+  },
+  codeIcon: {
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0
+  },
+  codeDetails: {
+    flex: 1,
+    overflow: 'hidden'
+  },
+  codeName: {
+    margin: 0,
+    fontSize: '14px',
+    fontWeight: 500,
+    color: '#212529',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  },
+  codeSplit: {
+    margin: 0, 
+    color: '#666', 
+    fontSize: '0.8em',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    maxWidth: '200px'
+  },
+  removeButton: {
+    position: 'absolute',
+    top: '-8px',
+    right: '-8px',
+    backgroundColor: '#ef4444',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '24px',
+    height: '24px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px'
+  },
+    addButton: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px',
+        border: '1px solid #237804',
+        borderRadius: '1px',
+        padding: '8px 12px',
+        cursor: 'pointer',
+        marginTop: '10px',
+        
+    },
+  codeMirrorContainer: {
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    marginBottom: '10px',
+  }
+};
+
+
+
+const variablesStyles = {
+  container: {
+    width: '100%',
+    border: '1px solid #d1d5db', // Light gray border
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  headerContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '10px',
+  },
+  iconContainer: {
+      width: '32px',
+      height: '32px',
+      marginRight: '10px',
+  },
+  header: {
+    backgroundColor: '#fff', // Very light gray background
+    padding: '8px 12px',
+    borderBottom: '1px solid #d1d5db',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    color: '#374151', // Dark gray text
+    fontFamily: 'Outfit',
+    fontSize: '14px',
+    fontWeight: '500',
+    fontStyle: 'italic'
+  },
+  closeButton: {
+    background: 'none',
+    border: 'none',
+    color: '#ef4444', // Red color for close
+    cursor: 'pointer',
+    fontSize: '16px',
+  },
+  row: {
+    display: 'flex',
+    padding: '8px 12px',
+    borderBottom: '1px solid #e5e7eb', // Light border between rows
+    alignItems: 'center',
+  },
+  label: {
+    color: '#4b5563', // Dark gray label color
+    fontSize: '14px',
+    flex: '0 0 80px', // Fixed width for labels
+    fontWeight: '500',
+  },
+  input: {
+      width: '100%',
+    flex: '1',
+    // border: '1px solid #d1d5db',
+    border: 'none',
+    padding: '6px 8px',
+    fontFamily: 'Outfit',
+    fontSize: '14px',
+    color: '#111827', // Nearly black text
+  },
+  variableList: {
+      display: 'flex',
+      flexDirection: 'column',
+      // gap: '4px',
+      marginTop: '16px'
+    },
+  
+  variableName: {
+      // fontWeight: 'bold',
+      fontFamily: 'Outfit',
+      flex: 1,
+  },
+  toggleButton: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  toggleRowContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '8px',
+      marginTop: '16px'
+  },
+    toggleRow: {
+      position: 'relative',
+      width: '90%',
+      backgroundColor: '#f8f9fa',
+      border: '1px solid #e9ecef',
+      padding: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: '12px'
+    },
+    dropdown: {
+      width: '90%',
+      backgroundColor: '#f9fafb',
+      padding: '8px 12px',
+      paddingLeft: 0,
+      borderTop: '1px solid #e5e7eb',
+    },
+    dropdownInput: {
+      width: '100%',
+      border: '1px solid #d1d5db',
+      padding: '12px 8px',
+      fontSize: '14px',
+    },
+  removeButton: {
+      backgroundColor: '#ef4444',
+      color: 'white',
+      border: 'none',
+      borderRadius: '50%',
+      width: '24px',
+      height: '24px',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+};
+
+
+
+const functionNodeStyles = {
+  container: {
+    padding: '10px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  headerContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+  iconContainer: {
+    width: '32px',
+    height: '32px',
+    marginRight: '10px',
+  },
+  headerText: {
+    margin: 0,
+    fontSize: '16px',
+  },
+  inputContainer: {
+    marginBottom: '15px',
+  },
+  input: {
+    width: '90%',
+    padding: '8px 12px',
+    border: '1px solid #D1D5DB',
+    fontSize: '14px',
+    fontFamily: 'Outfit'
+  },
+    selectInput: {
+    width: '100%',
+    padding: '8px 12px',
+    borderRadius: '1px',
+    border: '1px solid #ddd',
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    },
+    addButton: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px',
+        border: '1px solid #237804',
+        borderRadius: '1px',
+        padding: '8px 12px',
+        cursor: 'pointer',
+        marginTop: '10px',
+        // '&:hover': {
+        //   backgroundColor: 'rgb(138, 207, 113)'
+        // }
+    },
+    functionName: {
+      marginTop: '15px',
+      width: '100%',
+      boxSizing: 'border-box',
+    },
+    functionNameLabel: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '5px',
+      marginBottom: '8px',
+      fontWeight: '500',
+      position: 'relative',
+      fontFamily: 'Outfit',
+    },
+    infoIcon: {
+      cursor: 'help',
+      marginLeft: '4px',
+      position: 'relative',
+    },
+    tooltip: {
+      position: 'absolute',
+      top: '100%',
+      left: '0',
+      width: '220px',
+      padding: '8px 12px',
+      backgroundColor: '#333',
+      color: 'white',
+      borderRadius: '4px',
+      fontSize: '12px',
+      lineHeight: '1.4',
+      zIndex: 10,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+      visibility: 'hidden',
+      opacity: 0,
+      transition: 'opacity 0.2s, visibility 0.2s',
+    },
+    tooltipVisible: {
+      visibility: 'visible',
+      opacity: 1,
+    },
+    filterList: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        marginTop: '20px'
+      },
+    filterItem: {
+        position: 'relative',
+        width: '90%',
+        backgroundColor: '#f8f9fa',
+        border: '1px solid #e9ecef',
+        borderRadius: '4px',
+        padding: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px'
+      },
+    filterIcon: {
+        width: '32px',
+        height: '32px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0
+      },
+    filterDetails: {
+        flex: 1,
+        overflow: 'hidden'
+      },
+    filterName: {
+        margin: 0,
+        fontSize: '14px',
+        fontWeight: 500,
+        color: '#212529',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+      },
+    filterExp: {
+        margin: 0,
+        fontSize: '12px',
+        color: '#6c757d'
+      },
+    removeButton: {
+        position: 'absolute',
+        top: '-8px',
+        right: '-8px',
+        backgroundColor: '#ef4444',
+        color: 'white',
+        border: 'none',
+        borderRadius: '50%',
+        width: '24px',
+        height: '24px',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '4px'
+      },
+  divider: {
+    margin: '10px 0',
+    border: 'none',
+    borderTop: '1px solid #e0e0e0',
+  },
+};
+
 // In ../../modules/panelStyles.js
 
 
 export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, 
-        buttonStyles, cardStyles, aiNodeStyles, textInputStyles, voiceStyles, carouselStyles }
+        buttonStyles, cardStyles, aiNodeStyles, textInputStyles, voiceStyles, carouselStyles, filterNodeStyles,
+        codeNodeStyles, variablesStyles, functionNodeStyles }

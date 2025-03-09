@@ -42,7 +42,7 @@ const logicNodeTypes = [
 const developmentNodeTypes = [
   { type: "NodeTypes.API_NODE", label: 'API', color: '#ffffff', textColor: '#000000', icon: ApiIcon },
   { type: NodeTypes.CODE_NODE, label: 'Javascript', color: '#ffffff', textColor: '#000000', icon: CodeIcon },
-  { type: "NodeTypes.FUNCTION_NODE", label: 'Function', color: '#ffffff', textColor: '#000000', icon: CustomFunctionIcon },
+  { type: NodeTypes.FUNCTION_NODE, label: 'Function', color: '#ffffff', textColor: '#000000', icon: CustomFunctionIcon },
   { type: NodeTypes.VARIABLE_NODE, label: 'Set Variable', color: '#ffffff', textColor: '#000000', icon: VariableIcon },
 ];
 

@@ -20,7 +20,7 @@ const NodeHolder = ({ title, nodeTypes}) => {
                     }}>{title}</h3>
             <hr style={{
                 // width:'275px',
-                width: '107%',
+                width: '111%',
                 textAlign:'left',
                 border: '1px solid #EEEEEE',
                 marginLeft:'-15px'
