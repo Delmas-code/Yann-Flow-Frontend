@@ -3,7 +3,7 @@ import { NodeTypes } from '../utils/Enum';
 import { ReactFlow, Controls, Background, ConnectionMode } from '@xyflow/react';
 
 
-const FlowCanvas = ({ nodes, edges, nodeTypes, handlers }) => {
+const FlowCanvas = ({ nodes, edges, nodeTypes, handlers, sidebarCollapsed  }) => {
   
   const isValidConnection = (connection) => {
     // Find the source node
@@ -22,14 +22,19 @@ const FlowCanvas = ({ nodes, edges, nodeTypes, handlers }) => {
 
     return !hasExistingConnection;
   };
+  // Dynamically calculate margins and width based on sidebar state
+  // const sidebarWidth = sidebarCollapsed ? '70px' : '22%';
+  const sidebarWidth = sidebarCollapsed ? '7%' : '22%';
 
 
   return (
   <div className="flow-canvas" style={{ 
     flex: 1,
-    marginLeft: '22%',
     height: '100vh',
-    width: '75%'
+    width: `calc(100% - ${sidebarWidth})`,
+    marginLeft: sidebarWidth,
+    transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
+    // zIndex: 1
   }}>
     <ReactFlow
       nodes={nodes}
@@ -40,6 +45,7 @@ const FlowCanvas = ({ nodes, edges, nodeTypes, handlers }) => {
       fitView={false}
       // connectionMode={ConnectionMode.Loose}
       isValidConnection={isValidConnection}
+      // style={{ zIndex: 1 }}
     >
       <Controls />
       <Background />

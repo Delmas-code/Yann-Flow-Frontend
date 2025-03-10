@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "@fontsource/outfit"
 import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon, 
   collectionsIcon, transactionsIcon, invoicesIcon, creditCardIcon,
   TextIcon2, ImageIcon, VideoIcon, AudioIcon, 
   FileIcon, LocationIcon, ButtonIcon, TextInputIcon, CardIcon, VoiceIcon, CarouselIcon,
   AIIcon, SmartDelayIcon1, RandomizerIcon1, ConditionIcon1, FilterIcon, ApiIcon, CodeIcon,
-  CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon, PottaIcon
+  CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon, PottaIcon,
+  MiniTextIcon, MiniListenIcon, MiniLogicIcon, MiniDevIcon, MiniLibraryIcon, MiniSettingIcon
 } from '../modules/projectIcons';
 import NodeHolder from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ReactDOM from 'react-dom';
 
+// Create colored versions of the mini icons
+const ColoredIcon = ({ IconComponent, isHovered }) => {
+  return (
+    <div style={{ color: isHovered ? '#237804' : 'inherit' }}>
+      {/* This div wrapper will affect the SVG's color through CSS inheritance */}
+      <IconComponent />
+    </div>
+  );
+};
 
 const messageNodeTypes = [
     { type: NodeTypes.IMAGE_NODE, label: 'Image', color: '#ffffff', textColor: '#000000', icon: ImageIcon },
@@ -64,12 +75,12 @@ const appsNodeTypes = [
 
 // Category definitions with their associated node types
 const categories = [
-  { id: 'message', label: 'message', icon: TextIcon2, nodeTypes: messageNodeTypes },
-  { id: 'listenTo', label: 'Listen', icon: TextInputIcon, nodeTypes: listenToNodeTypes },
-  { id: 'logic', label: 'Logic', icon: ConditionIcon1, nodeTypes: logicNodeTypes },
-  { id: 'development', label: 'Dev', icon: CodeIcon, nodeTypes: developmentNodeTypes },
-  { id: 'resource', label: 'library', icon: LibraryIcon, nodeTypes: resourceNodeTypes },
-  { id: 'settings', label: 'Settings', icon: SupportIcon, nodeTypes: [] }
+  { id: 'message', label: 'message', icon: MiniTextIcon, nodeTypes: messageNodeTypes },
+  { id: 'listenTo', label: 'Listen', icon: MiniListenIcon, nodeTypes: listenToNodeTypes },
+  { id: 'logic', label: 'Logic', icon: MiniLogicIcon, nodeTypes: logicNodeTypes },
+  { id: 'development', label: 'Dev', icon: MiniDevIcon, nodeTypes: developmentNodeTypes },
+  { id: 'resource', label: 'library', icon: MiniLibraryIcon, nodeTypes: resourceNodeTypes },
+  { id: 'settings', label: 'Settings', icon: MiniSettingIcon, nodeTypes: [] }
 ];
 
 // Renders a draggable node item that works in both full and minimal views
@@ -109,18 +120,97 @@ const NodeItem = ({ node, isCollapsed }) => {
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({isCollapsed, setIsCollapsed}) => {
   const [activeTab, setActiveTab] = useState('nodes');
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [popupPortalNode, setPopupPortalNode] = useState(null);
   const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
+
+  const categoryRefs = useRef({});
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
     setHoveredCategory(null); // Reset hovered category when toggling
   };
+  
+  useEffect(() => {
+    // Create a div for our portal
+    const portalNode = document.createElement('div');
+    portalNode.style.position = 'absolute';
+    portalNode.style.top = '0';
+    portalNode.style.left = '0';
+    portalNode.style.zIndex = '99999';
+    document.body.appendChild(portalNode);
+    
+    setPopupPortalNode(portalNode);
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.removeChild(portalNode);
+    };
+  }, []);
+
+  // Update popup position when category is hovered
+  useEffect(() => {
+    if (hoveredCategory && categoryRefs.current[hoveredCategory]) {
+      const rect = categoryRefs.current[hoveredCategory].getBoundingClientRect();
+      setPopupPosition({
+        top: rect.top,
+        left: rect.right + 10
+      });
+    }
+  }, [hoveredCategory]);
 
   // Define sidebar width based on collapsed state
-  const sidebarWidth = isCollapsed ? '70px' : '22%';
+  const sidebarWidth = isCollapsed ? '7%' : '22%';
+
+  // Function to render portal content
+  const renderPortalContent = (category) => {
+    if (!popupPortalNode) return null;
+    
+    return ReactDOM.createPortal(
+      <div 
+        className="node-popup"
+        style={{
+          position: 'fixed',
+          left: `${popupPosition.left}px`,
+          top: `${popupPosition.top}px`,
+          backgroundColor: 'white',
+          border: '1px solid #ddd',
+          borderRadius: '4px',
+          padding: '10px',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+          zIndex: 10000,
+          width: '180px'
+        }}
+      >
+        <div style={{ fontWeight: 'bold', marginBottom: '10px' }}>
+          {category.label === 'message' ? 'Messaging' : 
+           category.label === 'listenTo' ? 'Listen To' : 
+           category.label === 'logic' ? 'Logic' : 
+           category.label === 'development' ? 'Development' : 
+           category.label === 'library' ? 'Resources' : 
+           category.label}
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          {category.nodeTypes.map((node) => (
+            <NodeItem key={node.label} node={node} isCollapsed={true} />
+          ))}
+        </div>
+      </div>,
+      popupPortalNode
+    );
+  };
+
+  // Dynamic style for icon wrapper to affect SVG fill color
+  const getIconWrapperStyle = (isHovered) => {
+    return {
+      marginBottom: '5px',
+      color: isHovered ? '#237804' : 'inherit',
+      // Add a CSS filter to change the SVG fill color
+      filter: isHovered ? 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(90%) contrast(85%)' : 'none'
+    };
+  };
 
   return (
     <div className="sidebar" style={{
@@ -135,6 +225,8 @@ const Sidebar = () => {
       display: 'flex',
       flexDirection: 'column',
       transition: 'width 0.3s ease-in-out',
+      // zIndex: 1000,          
+      isolation: 'isolate'
     }}>
       
       {/* Toggle Button */}
@@ -217,7 +309,7 @@ const Sidebar = () => {
           <>
             {isCollapsed ? (
               // Minimal sidebar content - only icons with labels
-              <div className="minimal-sidebar">
+              <div className="minimal-sidebar" style={{paddingTop: '30px'}}>
                 {categories.map((category) => {
                   const CategoryIcon = category.icon;
                   const isHovered = hoveredCategory === category.id;
@@ -225,12 +317,13 @@ const Sidebar = () => {
                     <div 
                       key={category.id}
                       className="category-container"
+                      ref={el => categoryRefs.current[category.id] = el}
                       onMouseEnter={() => setHoveredCategory(category.id)}
                       onMouseLeave={() => setHoveredCategory(null)}
                       style={{ 
                         position: 'relative',
                         marginBottom: '24px',
-                        width: '100%'
+                        width: '100%',
                       }}
                     >
                       <div className="category" style={{ 
@@ -239,44 +332,21 @@ const Sidebar = () => {
                         alignItems: 'center',
                         padding: '0 5px'
                       }}>
-                        <div style={{ marginBottom: '5px' }}>
-                          <CategoryIcon size={22} />
+                        <div style={getIconWrapperStyle(isHovered)}>
+                          <CategoryIcon />
                         </div>
-                        <span style={{ fontSize: '12px', textAlign: 'center' }}>{category.label}</span>
+                        <span style={{ 
+                          fontSize: '12px', 
+                          textAlign: 'center',
+                          color: isHovered ? '#237804' : 'inherit',
+                          transition: 'color 0.2s ease-in-out'
+                        }}>
+                          {category.label}
+                        </span>
                       </div>
                       
                       {/* Popup menu on hover (only if the category has nodes) */}
-                      {isHovered && category.nodeTypes.length > 0 && (
-                        <div 
-                          className="node-popup"
-                          style={{
-                            position: 'absolute',
-                            left: '100%',
-                            top: '-10px',
-                            backgroundColor: 'white',
-                            border: '1px solid #ddd',
-                            borderRadius: '4px',
-                            padding: '10px',
-                            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                            zIndex: 100,
-                            width: '180px'
-                          }}
-                        >
-                          <div style={{ fontWeight: 'bold', marginBottom: '10px' }}>
-                            {category.label === 'message' ? 'Messaging' : 
-                             category.label === 'listenTo' ? 'Listen To' : 
-                             category.label === 'logic' ? 'Logic' : 
-                             category.label === 'Dev' ? 'Development' : 
-                             category.label === 'library' ? 'Resources' : 
-                             category.label}
-                          </div>
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                            {category.nodeTypes.map((node) => (
-                              <NodeItem key={node.label} node={node} isCollapsed={true} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      {isHovered && category.nodeTypes.length > 0 && renderPortalContent(category)}
                     </div>
                   );
                 })}
@@ -313,13 +383,14 @@ const Sidebar = () => {
               // Minimal apps view
               <div 
                 className="category-container"
+                ref={el => categoryRefs.current['apps'] = el}
                 onMouseEnter={() => setHoveredCategory('apps')}
                 onMouseLeave={() => setHoveredCategory(null)}
                 style={{ 
                   position: 'relative',
                   width: '100%',
                   display: 'flex',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
                 }}
               >
                 <div className="category" style={{ 
@@ -327,26 +398,33 @@ const Sidebar = () => {
                   flexDirection: 'column', 
                   alignItems: 'center'
                 }}>
-                  <div style={{ marginBottom: '5px' }}>
-                    <PottaIcon size={22} />
+                  <div style={getIconWrapperStyle(hoveredCategory === 'apps')}>
+                    <PottaIcon />
                   </div>
-                  <span style={{ fontSize: '12px', textAlign: 'center' }}>Potta</span>
+                  <span style={{ 
+                    fontSize: '12px', 
+                    textAlign: 'center',
+                    color: hoveredCategory === 'apps' ? '#237804' : 'inherit',
+                    transition: 'color 0.2s ease-in-out'
+                  }}>
+                    Potta
+                  </span>
                 </div>
                 
                 {/* Popup menu for Apps on hover */}
-                {hoveredCategory === 'apps' && (
+                {hoveredCategory === 'apps' && ReactDOM.createPortal(
                   <div 
                     className="node-popup"
                     style={{
-                      position: 'absolute',
-                      left: '100%',
-                      top: '-10px',
+                      position: 'fixed',
+                      left: `${popupPosition.left}px`,
+                      top: `${popupPosition.top}px`,
                       backgroundColor: 'white',
                       border: '1px solid #ddd',
                       borderRadius: '4px',
                       padding: '10px',
                       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                      zIndex: 100,
+                      zIndex: 10000,
                       width: '180px'
                     }}
                   >
@@ -358,7 +436,8 @@ const Sidebar = () => {
                         <NodeItem key={node.label} node={node} isCollapsed={true} />
                       ))}
                     </div>
-                  </div>
+                  </div>,
+                  popupPortalNode
                 )}
               </div>
             ) : (
