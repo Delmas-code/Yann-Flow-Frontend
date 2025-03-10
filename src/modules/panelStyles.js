@@ -1601,6 +1601,287 @@ const variablesStyles = {
 };
 
 
+const apiNodeStyles = {
+  container: {
+    padding: '10px',
+    fontFamily: 'Outfit',
+    width: '100%',
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  headerContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '10px',
+  },
+  iconContainer: {
+    width: '32px',
+    height: '32px',
+    marginRight: '10px',
+  },
+  headerText: {
+    margin: 0,
+    fontSize: '16px',
+  },
+  inputContainer: {
+    marginBottom: '15px',
+  },
+  headerContainer: {
+    width: '100%',
+    border: '1px solid #d1d5db', // Light gray border
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  header: {
+    backgroundColor: '#fff', // Very light gray background
+    padding: '8px 12px',
+    borderBottom: '1px solid #d1d5db',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    color: '#374151', // Dark gray text
+    fontFamily: 'Outfit',
+    fontSize: '14px',
+    fontWeight: '500',
+    fontStyle: 'italic'
+  },
+  headerCloseButton: {
+    background: 'none',
+    border: 'none',
+    color: '#ef4444', // Red color for close
+    cursor: 'pointer',
+    fontSize: '16px',
+  },
+  headerLabel: {
+    color: '#4b5563', // Dark gray label color
+    fontSize: '14px',
+    flex: '0 0 80px', // Fixed width for labels
+    fontWeight: '500',
+  },
+  input: {
+    width: '90%',
+    padding: '8px 12px',
+    border: '1px solid #D1D5DB',
+    fontSize: '14px',
+    fontFamily: 'Outfit'
+  },
+  selectInput: {
+    width: '100%',
+    padding: '8px 12px',
+    borderRadius: '1px',
+    border: '1px solid #ddd',
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    fontFamily: 'Outfit',
+  },
+  addButton: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+    border: '1px solid #237804',
+    borderRadius: '1px',
+    padding: '8px 12px',
+    cursor: 'pointer',
+    marginTop: '10px',
+  },
+  addValuesBtn: {
+    backgroundColor: '#237804',
+    borderRadius: '20px',
+    color: '#FFF',
+    fontFamily: 'Outfit',
+    fontWeight: '300',
+    border: 0,
+    padding: '5px 7px',
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    marginTop: '7px',
+    marginBottom: '15px',
+    float: 'right',
+
+  },
+  functionName: {
+    marginTop: '15px',
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  functionNameLabel: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+    marginBottom: '8px',
+    fontWeight: '500',
+    position: 'relative',
+    fontFamily: 'Outfit',
+  },
+  infoIcon: {
+    cursor: 'help',
+    marginLeft: '4px',
+    position: 'relative',
+  },
+  tooltip: {
+    position: 'absolute',
+    top: '100%',
+    left: '0',
+    width: '220px',
+    padding: '8px 12px',
+    backgroundColor: '#333',
+    color: 'white',
+    borderRadius: '4px',
+    fontSize: '12px',
+    lineHeight: '1.4',
+    zIndex: 10,
+    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+    visibility: 'hidden',
+    opacity: 0,
+    transition: 'opacity 0.2s, visibility 0.2s',
+  },
+  tooltipVisible: {
+    visibility: 'visible',
+    opacity: 1,
+  },
+  filterList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    marginTop: '20px'
+  },
+  filterItem: {
+    position: 'relative',
+    width: '90%',
+    backgroundColor: '#f8f9fa',
+    border: '1px solid #e9ecef',
+    borderRadius: '4px',
+    padding: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px'
+  },
+  filterIcon: {
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0
+  },
+  filterDetails: {
+    flex: 1,
+    overflow: 'hidden'
+  },
+  filterName: {
+    margin: 0,
+    fontSize: '14px',
+    fontWeight: 500,
+    color: '#212529',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  },
+  filterExp: {
+    margin: 0,
+    fontSize: '12px',
+    color: '#6c757d'
+  },
+  removeButton: {
+    position: 'absolute',
+    top: '-8px',
+    right: '-8px',
+    backgroundColor: '#ef4444',
+    color: 'white',
+    border: 'none',
+    borderRadius: '50%',
+    width: '24px',
+    height: '24px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '4px'
+  },
+  divider: {
+    margin: '10px 0',
+    border: 'none',
+    borderTop: '1px solid #e0e0e0',
+  },
+  headerValueContainer: {
+    marginBottom: '10px',
+    padding: '10px',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '4px',
+    position: 'relative',
+    border: '1px solid #ddd',
+  },
+  headerRow: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  headerLabel: {
+    width: '120px',
+    fontSize: '14px',
+    color: '#333',
+  },
+  headerDelete: {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    cursor: 'pointer',
+    color: '#ff4d4f',
+  },
+  sectionTitle: {
+    fontWeight: '500',
+    marginTop: '30px',
+    marginBottom: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  parameterValueContainer: {
+    marginBottom: '10px',
+    padding: '10px',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '4px',
+    position: 'relative',
+    border: '1px solid #ddd',
+  },
+  apiListItem: {
+    padding: '10px',
+    marginBottom: '8px',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  apiListItemSelected: {
+    backgroundColor: '#e6f7ff',
+    borderColor: '#1890ff',
+  },
+  apiActions: {
+    display: 'flex',
+    gap: '5px',
+  },
+  actionButton: {
+    cursor: 'pointer',
+    padding: '4px',
+    borderRadius: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  responseSection: {
+    marginTop: '20px',
+  },
+  noApisMessage: {
+    color: '#666',
+    fontStyle: 'italic',
+    marginTop: '10px',
+  },
+};
 
 const functionNodeStyles = {
   container: {
@@ -1764,4 +2045,4 @@ const functionNodeStyles = {
 
 export { imageStyles, textStyles, videoStyles, audioStyles, fileStyles, locationStyles, 
         buttonStyles, cardStyles, aiNodeStyles, textInputStyles, voiceStyles, carouselStyles, filterNodeStyles,
-        codeNodeStyles, variablesStyles, functionNodeStyles }
+        codeNodeStyles, variablesStyles, apiNodeStyles, functionNodeStyles }
