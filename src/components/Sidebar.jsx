@@ -296,7 +296,6 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
         flexDirection: 'column',
         alignItems: isCollapsed ? 'center' : 'stretch'
       }}
-      // onClick={() => setHoveredCategory(null)}
       >
         {activeTab === 'nodes' ? (
           <>
@@ -382,7 +381,7 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
                 className="category-container"
                 ref={el => categoryRefs.current['apps'] = el}
                 onMouseEnter={() => setHoveredCategory('apps')}
-                onMouseLeave={() => setHoveredCategory(null)}
+                // onMouseLeave={() => setHoveredCategory(null)}
                 onClick={() => {
                   setHoveredCategory(null)
                   setHoveredCategory('apps')
