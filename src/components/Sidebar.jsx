@@ -8,7 +8,7 @@ import {MyNewIcon, VoucherIcon, dataBundlesIcon, disbursmentsIcon, airtimeIcon,
   CustomFunctionIcon, VariableIcon, ContactsIcon, LibraryIcon, TutorialIcon, SupportIcon, PottaIcon,
   MiniTextIcon, MiniListenIcon, MiniLogicIcon, MiniDevIcon, MiniLibraryIcon, MiniSettingIcon
 } from '../modules/projectIcons';
-import NodeHolder from './NodeHolder';
+import {NodeHolder, NodeItem} from './NodeHolder';
 import { NodeTypes } from '../utils/Enum';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ReactDOM from 'react-dom';
@@ -83,42 +83,6 @@ const categories = [
   { id: 'settings', label: 'Settings', icon: MiniSettingIcon, nodeTypes: [] }
 ];
 
-// Renders a draggable node item that works in both full and minimal views
-const NodeItem = ({ node, isCollapsed }) => {
-  const Icon = node.icon;
-  
-  const onDragStart = (e, nodeType) => {
-    e.dataTransfer.setData('application/reactflow', JSON.stringify(nodeType));
-    e.dataTransfer.effectAllowed = 'move';
-  };
-  
-  return (
-    <div 
-      className="node-item"
-      draggable
-      onDragStart={(e) => onDragStart(e, node.type)}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        padding: isCollapsed ? '8px 4px' : '8px',
-        margin: isCollapsed ? '4px 0' : '4px 0',
-        background: node.color || '#ffffff',
-        border: '1px solid #eee',
-        borderRadius: '4px',
-        cursor: 'grab',
-        color: node.textColor || '#000000',
-        fontSize: isCollapsed ? '12px' : '14px',
-        whiteSpace: 'nowrap',
-        justifyContent: isCollapsed ? 'center' : 'flex-start'
-      }}
-    >
-      <div style={{ marginRight: isCollapsed ? '0' : '8px' }}>
-        <Icon size={isCollapsed ? 16 : 18} />
-      </div>
-      {!isCollapsed && <span>{node.label}</span>}
-    </div>
-  );
-};
 
 const Sidebar = ({isCollapsed, setIsCollapsed}) => {
   const [activeTab, setActiveTab] = useState('nodes');
@@ -161,6 +125,33 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
     }
   }, [hoveredCategory]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Only handle if sidebar is collapsed
+      if (!isCollapsed) return;
+  
+      // Check if the click is inside any category element
+      const isInsideCategory = Object.values(categoryRefs.current).some(
+        (ref) => ref && ref.contains(event.target)
+      );
+      
+      // Check if the click is inside the popup portal
+      const isInsidePopup = popupPortalNode && popupPortalNode.contains(event.target);
+  
+      // Close the popup if the click is outside both categories and the popup
+      if (!isInsideCategory && !isInsidePopup) {
+        setHoveredCategory(null);
+      }
+    };
+  
+    // Add event listener when the component mounts or dependencies change
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [popupPortalNode, isCollapsed]); // Dependencies ensure latest state
+
   // Define sidebar width based on collapsed state
   const sidebarWidth = isCollapsed ? '7%' : '22%';
 
@@ -177,7 +168,7 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
           top: `${popupPosition.top}px`,
           backgroundColor: 'white',
           border: '1px solid #ddd',
-          borderRadius: '4px',
+          // borderRadius: '4px',
           padding: '10px',
           boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
           zIndex: 10000,
@@ -304,7 +295,9 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: isCollapsed ? 'center' : 'stretch'
-      }}>
+      }}
+      // onClick={() => setHoveredCategory(null)}
+      >
         {activeTab === 'nodes' ? (
           <>
             {isCollapsed ? (
@@ -319,7 +312,11 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
                       className="category-container"
                       ref={el => categoryRefs.current[category.id] = el}
                       onMouseEnter={() => setHoveredCategory(category.id)}
-                      onMouseLeave={() => setHoveredCategory(null)}
+                      // onMouseLeave={() => setHoveredCategory(null)}
+                      onClick={() => {
+                        setHoveredCategory(null)
+                        setHoveredCategory(category.id)
+                      }}
                       style={{ 
                         position: 'relative',
                         marginBottom: '24px',
@@ -386,6 +383,10 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
                 ref={el => categoryRefs.current['apps'] = el}
                 onMouseEnter={() => setHoveredCategory('apps')}
                 onMouseLeave={() => setHoveredCategory(null)}
+                onClick={() => {
+                  setHoveredCategory(null)
+                  setHoveredCategory('apps')
+                }}
                 style={{ 
                   position: 'relative',
                   width: '100%',
@@ -421,7 +422,7 @@ const Sidebar = ({isCollapsed, setIsCollapsed}) => {
                       top: `${popupPosition.top}px`,
                       backgroundColor: 'white',
                       border: '1px solid #ddd',
-                      borderRadius: '4px',
+                      // borderRadius: '4px',
                       padding: '10px',
                       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
                       zIndex: 10000,

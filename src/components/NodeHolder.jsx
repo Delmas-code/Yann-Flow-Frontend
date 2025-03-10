@@ -86,4 +86,52 @@ const NodeHolder = ({ title, nodeTypes, icon }) => {
 
 }
 
-export default NodeHolder;
+
+// Renders a draggable node item that works in both full and minimal views
+const NodeItem = ({ node, isCollapsed }) => {
+  const IconComponent = node.icon;
+  
+  const onDragStart = (event, nodeType) => {
+    event.dataTransfer.setData('application/reactflow', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  };
+  
+  return (
+    <div
+        key={node.type}
+        className="node-item"
+        title={node.label}
+        onDragStart={(e) => onDragStart(e, node.type)}
+        draggable
+        style={{
+            backgroundColor: node.color,
+            color: node.textColor,
+            fontWeight: '300',
+            fontSize: '15px',
+            fontFamily:'Outfit',
+            lineHeight: '18px',
+            padding: '10px',
+            cursor: 'grab',
+            // border: '1px solid #EEEEEE',
+            display: 'flex',
+            alignItems: 'center',
+            height: '25px',
+            textAlign: 'center',
+            whiteSpace: 'nowrap', 
+            overflow: 'visible',
+            textOverflow: 'ellipsis',
+        }}
+    >
+      
+        {IconComponent && (
+        <span style={{ display: 'flex', alignItems: 'center', paddingRight: '5px', paddingTop: '1px'}}>
+        <IconComponent size={18} color="#237804" />
+        </span>
+        )}
+        {node.label}
+        
+    </div>
+  );
+};
+
+export  { NodeHolder, NodeItem };
